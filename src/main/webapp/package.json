@@ -4,7 +4,7 @@
   "description": "this is a todolist web app",
   "main": "main.js",
   "scripts": {
-    "dev": "webpack-dev-server --hot --inline",
+    "dev": "webpack-dev-server --hot --inline --no-info",
     "build": "webpack -p"
   },
   "repository": {

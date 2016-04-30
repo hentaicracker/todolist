@@ -1,25 +1,55 @@
 @charset 'UTF-8';
 
 @import 'variables.scss';
+@import 'reset.scss';
 
-*, *:before, *:after {
-    box-sizing: border-box;
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5 url('build/images/bg.jpg') no-repeat center;
+  background-size: cover;
+  position: relative;
 }
-body, html {
-    height: 100%;
-    overflow: hidden;
-}
-body, ul {
-    margin: 0;
-    padding: 0;
-}
-body {
-    color: #4d4d4d;
-    font: 14px/1.4em 'Helvetica Neue', Helvetica, 'Microsoft Yahei', Arial, sans-serif;
-    background: #f5f5f5 url('build/images/bg.jpg') no-repeat center;
-    background-size: cover;
-    font-smoothing: antialiased;
-}
-ul {
-    list-style: none;
+
+#login {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  .login-header {
+    height: 100px;
+    vertical-align: middle;
+
+    h1 {
+      height: 50px;
+      font-size: 3em;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2em;
+      text-align: center;
+    }
+  }
+
+  .login-main {
+    height: 200px;
+
+    .input-row {
+      border: 1px solid #f5f5f5;
+      height: 65px;
+      line-height: 65px;
+
+      .login-input {
+        background-color: transparent;
+      }
+    }
+  }
 }

@@ -1,0 +1,35 @@
+@charset 'UTF-8';
+
+@import 'variables.scss';
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
+html, body, div, span, object, i,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: #4d4d4d;
+  font: 14px/1.4em 'Helvetica Neue', Helvetica, 'Microsoft Yahei', Arial, sans-serif;
+}
+ul {
+  list-style: none;
+}
+input {
+  border: 0;
+}

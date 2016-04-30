@@ -10,3 +10,4 @@
 target
 /target/*
 !.gitignore
+npm-debug.log
