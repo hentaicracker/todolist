@@ -1,5 +1,5 @@
 {
-  "name": "webapp",
+  "name": "todolist",
   "version": "1.0.0",
   "description": "this is a todolist web app",
   "main": "main.js",
