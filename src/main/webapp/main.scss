@@ -2,3 +2,89 @@
 
 @import "variables.scss";
 @import "reset.scss";
+
+.container {
+  height: 100%;
+}
+
+#sidebar-view {
+  position: relative;
+  width: 300px;
+  height: 100%;
+  float: left;
+  background-color: #CCCCCC;
+
+  .user {
+    height: 100px;
+    padding: 20px;
+
+    > img {
+      width: 60px;
+      height: 60px;
+      border: none;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+
+    span {
+      vertical-align: middle;
+      margin-left: 20px;
+      color: $white;
+      font: {
+        size: 1.5em;
+        weight: bold;
+      }
+    }
+  }
+
+  .project-list {
+    ul li {
+      height: 50px;
+      line-height: 50px;
+      padding: 0 40px;
+
+      a {
+        color: $white;
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+
+      &.active, &:hover {
+        background-color: #BDBDBD;
+      }
+    }
+  }
+
+  .sign-out {
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    > a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: $white;
+      cursor: pointer;
+      background-color: #BDBDBD;
+
+      &:hover {
+        background-color: #ABABAB;
+      }
+    }
+  }
+}
+
+#list-view {
+  width: 500px;
+  height: 100%;
+  float: left;
+  background-color: $border-color;
+}
+
+#detail-view {
+  margin-left: 800px;
+}

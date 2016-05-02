@@ -25,11 +25,18 @@ time, mark, audio, video {
 }
 body {
   color: #4d4d4d;
-  font: 14px/1.4em 'Helvetica Neue', Helvetica, 'Microsoft Yahei', Arial, sans-serif;
+  font: {
+    size: 14px/1.4em;
+    family: $font-family;
+  }
 }
 ul {
   list-style: none;
 }
 input {
   border: 0;
+}
+
+a {
+  text-decoration: none;
 }

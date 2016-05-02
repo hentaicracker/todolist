@@ -27,7 +27,7 @@
     height: 100px;
     vertical-align: middle;
     margin-bottom: 30px;
-    color: #fff;
+    color: $white;
 
     h1 {
       height: 50px;
@@ -54,7 +54,7 @@
       .input-label {
         display: inline-block;
         font-size: 1.2em;
-        color: #fff;
+        color: $white;
         width: 20%;
         text-align: center;
       }
@@ -67,7 +67,7 @@
         width: 394px;
         transition: 0.2s ease;
         font-size: 1.5em;
-        color: #fff;
+        color: $white;
         &:focus {
           background-color: rgba(#EDEDED, 0.3);
         }
@@ -87,7 +87,7 @@
       transition: 0.2s ease;
       cursor: pointer;
       font-size: 1.5em;
-      color: #fff;
+      color: $white;
       &:hover {
         background-color: rgba(#EDEDED, 0.3);
       }
