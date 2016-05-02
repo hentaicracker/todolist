@@ -2,11 +2,14 @@ var path = require('path');
 
 module.exports = {
 
-  entry: './main.js',
+  entry: {
+    login: './login.js',
+    main: './main.js'
+  },
 
   output: {
     path: path.join(__dirname, './build'),
-    filename: 'build.js',
+    filename: '[name].bundle.js',
     publicPath: '/build/'
   },
 
