@@ -12,7 +12,7 @@
   width: 300px;
   height: 100%;
   float: left;
-  background-color: #CCCCCC;
+  background-color: $blue;
 
   .user {
     height: 100px;
@@ -41,24 +41,37 @@
     ul li {
       height: 50px;
       line-height: 50px;
-      padding: 0 40px;
       position: relative;
 
       a {
         color: $white;
         display: inline-block;
         height: 100%;
-        width: 50%;
-        margin-left: 30px;
+        width: 100%;
+
+        span{
+          margin-left: 70px;
+        }
+      }
+
+      &.not-all {
+        a {
+          span:last-child {
+            display: inline-block;
+            float: right;
+            margin-right: 40px;
+          }
+        }
       }
 
       &.active, &:hover {
-        background-color: #BDBDBD;
+        background-color: $hover-color;
       }
 
       .list-icon {
         position: absolute;
         top: 17px;
+        left: 40px;
         color: $white;
         font-size: 18px;
       }
@@ -78,10 +91,10 @@
       text-align: center;
       color: $white;
       cursor: pointer;
-      background-color: #BDBDBD;
+      background-color: $hover-color;
 
       &:hover {
-        background-color: #ABABAB;
+        background-color: $sign-out-color;
       }
     }
 
@@ -118,7 +131,7 @@
       font-size: 16px;
 
       &:focus {
-        border-color: #617fde;
+        border-color: $blue;
       }
     }
 
@@ -184,12 +197,46 @@
     text-align: center;
     line-height: 60px;
     font-size: 30px;
+    color: #B5B5B5;
     cursor: pointer;
 
-
+    &:hover {
+      border-color: $blue;
+      color: $blue;
+    }
   }
 }
 
 #detail-view {
   margin-left: 800px;
+
+  .detail-header {
+    height: 100px;
+    border-bottom: 1px solid #EDEDED;
+    padding: 0 40px;
+    line-height: 100px;
+    font-size: 20px;
+  }
+
+  .detail-content {
+    padding: 40px;
+    height: 500px;
+    overflow: auto;
+  }
+
+  .delete-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    font-size: 30px;
+    padding: 20px;
+
+    > i {
+      color: #B5B5B5;
+      cursor: pointer;
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
 }

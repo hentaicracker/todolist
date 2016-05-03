@@ -17,16 +17,24 @@
         <div class="project-list">
           <ul>
             <li class="active">
-              <i class="fa fa-tasks list-icon" aria-hidden="true"></i>
-              <a href="">所有任务</a>
+              <a href="">
+                <i class="fa fa-tasks list-icon" aria-hidden="true"></i>
+                <span>所有任务</span>
+              </a>
             </li>
-            <li class="">
-              <i class="fa fa-square-o list-icon" aria-hidden="true"></i>
-              <a href="">未完成</a>
+            <li class="not-all">
+              <a href="">
+                <i class="fa fa-square-o list-icon" aria-hidden="true"></i>
+                <span>未完成</span>
+                <span>0</span>
+              </a>
             </li>
-            <li class="">
-              <i class="fa fa-check-square-o list-icon" aria-hidden="true"></i>
-              <a href="">已完成</a>
+            <li class="not-all">
+              <a href="">
+                <i class="fa fa-check-square-o list-icon" aria-hidden="true"></i>
+                <span>已完成</span>
+                <span>0</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -65,12 +73,22 @@
             </li>
           </ul>
         </div>
-        <div class="add-task">
+        <div class="add-task" title="添加任务">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </div>
       </div>
 
-      <div id="detail-view">3</div>
+      <div id="detail-view">
+        <div class="detail-header">
+          <span>任务1</span>
+        </div>
+        <div class="detail-content">
+          <p>任务详情任务详情任务详情任务详情任务详情任务详情任务详情</p>
+        </div>
+        <div class="delete-btn">
+          <i class="fa fa-trash" aria-hidden="true" title="删除"></i>
+        </div>
+      </div>
     </div>
     <script src="./build/main.bundle.js"></script>
   </body>
