@@ -15,8 +15,9 @@ module.exports = {
 
   module: {
     loaders: [
-      {test: /\.scss$/, loader: 'style!css!sass'},
-      {test: /\.(png|jpg|gif)$/, loader: 'url-loader'}
+      { test: /\.scss$/, loader: 'style!css!sass'},
+      { test: /\.(svg|ttf|eot|woff|woff2)(\?.*$|$)/, loader: 'url-loader?importLoaders=1&limit=1000&name=/fonts/[name].[ext]'},
+      { test: /\.(png|jpg|gif)$/, loader: 'url-loader'}
     ]
   },
 

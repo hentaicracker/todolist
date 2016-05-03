@@ -42,16 +42,25 @@
       height: 50px;
       line-height: 50px;
       padding: 0 40px;
+      position: relative;
 
       a {
         color: $white;
-        display: block;
+        display: inline-block;
         height: 100%;
-        width: 100%;
+        width: 50%;
+        margin-left: 30px;
       }
 
       &.active, &:hover {
         background-color: #BDBDBD;
+      }
+
+      .list-icon {
+        position: absolute;
+        top: 17px;
+        color: $white;
+        font-size: 18px;
       }
     }
   }
@@ -75,6 +84,13 @@
         background-color: #ABABAB;
       }
     }
+
+    .sign-out-icon {
+      position: absolute;
+      top: 17px;
+      left: 115px;
+      color: $white;
+    }
   }
 }
 
@@ -83,6 +99,37 @@
   height: 100%;
   float: left;
   background-color: $border-color;
+  position: relative;
+
+  .search {
+    height: 100px;
+    width: 100%;
+    padding: 25px 50px 0 50px;
+    background-color: #EDEDED;
+
+    > input {
+      display: block;
+      width: 100%;
+      height: 50px;
+      border: #ABABAB 1px solid;
+      border-radius: 5px;
+      background-color: $white;
+      padding: 0 10px 0 50px;
+      font-size: 16px;
+
+      &:focus {
+        border-color: #617fde;
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      font-size: 30px;
+      color: #ABABAB;
+      top: 33px;
+      left: 63px;
+    }
+  }
 }
 
 #detail-view {
