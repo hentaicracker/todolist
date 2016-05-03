@@ -118,7 +118,7 @@
     height: 100px;
     width: 100%;
     padding: 25px 50px 0 50px;
-    background-color: #EDEDED;
+    background-color: $border-color;
 
     > input {
       display: block;
@@ -142,13 +142,22 @@
       top: 33px;
       left: 63px;
     }
+
+    &:focus {
+      .search-icon {
+        color: $blue;
+      }
+    }
   }
 
   .todo-list {
     height: 100%;
     width: 100%;
-    overflow-y: scroll;
 
+    ul {
+      width: 100%;
+    }
+    
     ul li {
       height: 50px;
       width: 100%;
@@ -156,7 +165,7 @@
       padding: 0 20px;
 
       &:hover {
-        background-color: #D4D4D4;
+        background-color: #EAEAEA;
       }
 
       .t-inner {
@@ -166,7 +175,7 @@
       .t-line {
         height: 1px;
         margin-left: 20px;
-        background-color: #D4D4D4;
+        background-color: #EAEAEA;
       }
 
       .t-check {
