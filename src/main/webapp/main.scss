@@ -157,14 +157,14 @@
     ul {
       width: 100%;
     }
-    
+
     ul li {
       height: 50px;
       width: 100%;
       line-height: 50px;
       padding: 0 20px;
 
-      &:hover {
+      &.active, &:hover {
         background-color: #EAEAEA;
       }
 
@@ -236,7 +236,7 @@
   .delete-btn {
     position: absolute;
     bottom: 20px;
-    right: 50px;
+    right: 30px;
     font-size: 30px;
     padding: 20px;
 
