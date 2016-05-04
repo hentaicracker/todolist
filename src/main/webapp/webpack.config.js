@@ -3,8 +3,7 @@ var path = require('path');
 module.exports = {
 
   entry: {
-    login: './login.js',
-    main: './main.js'
+    main: './src/main.js'
   },
 
   output: {
