@@ -1,0 +1,33 @@
+{
+  "status": {
+    "success": true
+  },
+  "user": {
+    "user_id": "001",
+    "user_name": "hentaicracker",
+    "nick_name": "hentaicracker",
+    "avatar": "url",
+    "taskLists": [
+      {
+      "task_id": "001",
+      "task_name": "hehe",
+      "task_content": "hahaha",
+      "start_time": "2016-05-05",
+      "end_time": "2016-06-06",
+      "task_priority": 1,
+      "task_lat": 105.34,
+      "task_lon": 35.32
+      },
+      {
+      "task_id": "002",
+      "task_name": "haha",
+      "task_content": "hehehe",
+      "start_time": "2016-05-05",
+      "end_time": "2016-06-06",
+      "task_priority": 2,
+      "task_lat": 105.34,
+      "task_lon": 35.32
+      }
+    ]
+  }
+}

@@ -7,7 +7,9 @@ import Router from 'Vue-router'
 import App from 'components/App'
 import LoginView from 'components/LoginView'
 import MainView from 'components/MainView'
+import VueResource from 'vue-resource'
 
+Vue.use(VueResource)
 Vue.use(Router)
 
 var router = new Router()
@@ -16,10 +18,17 @@ router.map({
   '/login': {
     component: LoginView
   },
-  '/user/:id': {
+  '/user': {
     component: MainView
   }
 })
 
+router.beforeEach(function(){
+    window.scrollTo(0,0)
+})
+
+router.alias({
+  '/' : '/login'
+})
 
 router.start(App, '#app')

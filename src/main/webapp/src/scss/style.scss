@@ -76,6 +76,18 @@
           background-color: rgba(#EDEDED, 0.3);
         }
       }
+
+    }
+    &.redBorder{
+      border-color: red;
+    }
+  }
+
+  .errors {
+    position: absolute;
+    top: 277px;
+    li {
+      color: red;
     }
   }
 
