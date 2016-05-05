@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="login-container">
     <div id="login">
       <div class="login-header">
         <h1>个人任务管理系统</h1>
@@ -21,3 +21,9 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'LoginView'
+}
+</script>

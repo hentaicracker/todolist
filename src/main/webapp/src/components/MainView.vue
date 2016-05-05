@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="main-container">
 
     <sidebar></sidebar>
     <todolist></todolist>
@@ -14,6 +14,9 @@
   import detail from './detail'
 
   export default {
+
+    name: 'MainView',
+
     components: {
       sidebar,
       todolist,

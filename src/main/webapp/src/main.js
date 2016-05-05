@@ -1,6 +1,6 @@
 require('font-awesome/scss/font-awesome.scss')
-require('./src/scss/style.scss')
-require('./src/scss/main.scss')
+require('./scss/style.scss')
+require('./scss/main.scss')
 
 import Vue from 'vue'
 import Router from 'Vue-router'
@@ -21,8 +21,5 @@ router.map({
   }
 })
 
-router.redirect({
-  '*': '/user/1'
-})
 
 router.start(App, '#app')

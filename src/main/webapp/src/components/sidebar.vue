@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar-view">
     <div class="user">
-      <img src="./build/images/avatar.png">
+      <img src="../../build/images/avatar.png">
       <span>hentaicracker</span>
     </div>
     <div class="project-list">
