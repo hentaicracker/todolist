@@ -27,7 +27,7 @@ const mutations = {
 
   TOGGLE_TASK (state) {
     state.activeTask.done = !state.activeTask.done
-  }
+  },
 
   EDIT_TASK (state, text) {
     state.activeTask.task_content = text
