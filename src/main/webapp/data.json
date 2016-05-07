@@ -11,6 +11,7 @@
       {
       "task_id": "001",
       "task_name": "hehe",
+      "task_done": true,
       "task_content": "hahaha",
       "start_time": "2016-05-05",
       "end_time": "2016-06-06",
@@ -21,6 +22,7 @@
       {
       "task_id": "002",
       "task_name": "haha",
+      "task_done": false,
       "task_content": "hehehe",
       "start_time": "2016-05-05",
       "end_time": "2016-06-06",

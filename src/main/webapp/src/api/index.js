@@ -1,10 +1,20 @@
 import Vue from 'vue'
-import Http from 'vue-resource'
+import VueResource from 'vue-resource'
 
-Vue.use(Http)
+Vue.use(VueResource)
 
 const config = {
-  loginUrl: 'data.json'
+  loginUrl: 'data.json',
+  userDataUrl: 'data.json'
+}
+
+export default {
+  getData (cb) {
+    vue.http.get(userDataUrl).then( (response) => {
+      let data = JSON.parse(response)
+      callback(data)
+    })
+  }
 }
 
 export default config

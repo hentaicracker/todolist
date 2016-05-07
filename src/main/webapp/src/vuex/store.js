@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import api from '../api'
 
 Vue.use(Vuex)
 
@@ -10,10 +11,6 @@ const state = {
 }
 
 const mutations = {
-
-  SET_ACTIVE_LIST (state, tasks) {
-    state.activeList = tasks
-  },
 
   ADD_TASK (state) {
     const newTask = {
