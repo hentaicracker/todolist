@@ -6,12 +6,10 @@
     </div>
     <div class="todo-list">
       <ul>
-        <li v-for="task in tasks | search">
+        <li v-for="task in tasks | search" :class="{active: task.task_id === activeTask.task_id}">
           <div class="t-inner">
-            <a class="t-check" href="">
-              <i class="fa fa-square-o list-icon" aria-hidden="true"></i>
-            </a>
-            <a class="t-content" href="">{{task.task_name}}</a>
+            <input class="toggle" type="checkbox" :checked="task.task_done" @change="toggleTask">
+            <a class="t-content" @click="updateActiveTask(task)">{{task.task_name}}</a>
             <span class="time">3月13日</span>
           </div>
           <div class="t-line bottom"></div>
@@ -25,6 +23,8 @@
 </template>
 
 <script>
+  import { updateActiveTask, toggleTask } from '../vuex/actions'
+
   export default {
 
     props: ['tasks'],
@@ -38,6 +38,16 @@
     filters: {
       search (tasks) {
         return tasks.filter( (task) => task.task_name.indexOf(this.searchText) > -1)
+      }
+    },
+
+    vuex: {
+      getters: {
+        activeTask: state => state.activeTask
+      },
+      actions: {
+        updateActiveTask,
+        toggleTask
       }
     }
 
