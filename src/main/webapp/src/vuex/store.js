@@ -6,11 +6,19 @@ Vue.use(Vuex)
 
 const state = {
   tasks: [],
-  activeTask: {},
-  activeList: []
+  user: {},
+  activeTask: {}
 }
 
 const mutations = {
+
+  RECIEVE_TASKS (state, tasks) {
+    state.tasks = tasks.data
+  },
+
+  RECIEVE_USER (state, user) {
+    state.user = user.data
+  },
 
   ADD_TASK (state) {
     const newTask = {

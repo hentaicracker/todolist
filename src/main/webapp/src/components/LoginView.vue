@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import config from '../api'
+import config from '../api/config'
 
 export default {
   name: 'LoginView',
@@ -58,13 +58,13 @@ export default {
 
   methods: {
     login () {
-      if (!this.isvalid) {
+      if (this.isValid) {
         this.$http.post(config.loginUrl, {
           username: this.user.username,
           password: this.user.password
         }).then( (response) => {
           let data = JSON.parse(response)
-          if (data.status.success) {
+          if (data.success) {
             this.$route.router.go('/user')
           }
         }, (response) => {

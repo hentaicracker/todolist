@@ -2,26 +2,16 @@
   <div id="list-view">
     <div class="search">
       <i class="fa fa-search search-icon" aria-hidden="true"></i>
-      <input type="text">
+      <input type="text" v-model="searchText">
     </div>
     <div class="todo-list">
       <ul>
-        <li class="active">
+        <li v-for="task in tasks | search">
           <div class="t-inner">
             <a class="t-check" href="">
               <i class="fa fa-square-o list-icon" aria-hidden="true"></i>
             </a>
-            <a class="t-content" href="">任务1</a>
-            <span class="time">3月13日</span>
-          </div>
-          <div class="t-line bottom"></div>
-        </li>
-        <li>
-          <div class="t-inner">
-            <a class="t-check" href="">
-              <i class="fa fa-square-o list-icon" aria-hidden="true"></i>
-            </a>
-            <a class="t-content" href="">任务2</a>
+            <a class="t-content" href="">{{task.task_name}}</a>
             <span class="time">3月13日</span>
           </div>
           <div class="t-line bottom"></div>
@@ -33,3 +23,23 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+
+    props: ['tasks'],
+
+    data () {
+      return {
+        searchText: ''
+      }
+    },
+
+    filters: {
+      search (tasks) {
+        return tasks.filter( (task) => task.task_name.indexOf(this.searchText) > -1)
+      }
+    }
+
+  }
+</script>
