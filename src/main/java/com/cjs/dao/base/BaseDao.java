@@ -1,6 +1,5 @@
 package com.cjs.dao.base;
 
-import com.cjs.util.string.StringUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -54,18 +53,6 @@ public class BaseDao<T extends Serializable> {
         return this.getSession().save(t);
     }
 
-    /**
-     * <p>保存对象集合</p>
-     *
-     * @param ts 需要保存的对象集合
-     */
-    public void saveAll(List<T> ts) {
-        if (ts != null && ts.size() > 0) {
-            for (T t : ts) {
-                this.save(t);
-            }
-        }
-    }
 
     /**
      * <p>更新一个对象</p>
@@ -76,18 +63,6 @@ public class BaseDao<T extends Serializable> {
         this.getSession().update(t);
     }
 
-    /**
-     * <p>更新对象集合</p>
-     *
-     * @param ts 需要更新的对象集合
-     */
-    public void updateAll(List<T> ts) {
-        if (ts != null && ts.size() > 0) {
-            for (T t : ts) {
-                this.update(t);
-            }
-        }
-    }
 
     /**
      * <p>保存或更新一个对象</p>
@@ -98,18 +73,6 @@ public class BaseDao<T extends Serializable> {
         this.getSession().saveOrUpdate(t);
     }
 
-    /**
-     * <p>保存或更新对象集合</p>
-     *
-     * @param ts 需要保存或更新的对象集合
-     */
-    public void saveOrUpdateAll(List<T> ts) {
-        if (ts != null && ts.size() > 0) {
-            for (T t : ts) {
-                this.saveOrUpdate(t);
-            }
-        }
-    }
 
     /**
      * <p>删除对象</p>
@@ -121,19 +84,6 @@ public class BaseDao<T extends Serializable> {
         this.getSession().delete(t);
     }
 
-    /**
-     * <p>删除对象集合</p>
-     * 此处根据传入对象的主键集合，删除数据库中对应的数据
-     *
-     * @param ts 需要删除的数据集合（包含主键集合，即ids）
-     */
-    public void deleteAll(List<T> ts) {
-        if (ts != null && ts.size() > 0) {
-            for (T t : ts) {
-                this.getSession().delete(t);
-            }
-        }
-    }
 
     /**
      * <p>根据ID获取对象</p>
@@ -160,46 +110,6 @@ public class BaseDao<T extends Serializable> {
     }
 
     /**
-     * <p>查询对应表所有数据的总数</p>
-     *
-     * @param hql    hql语句
-     * @param values 属性值的结合
-     * @return int 表中记录总数
-     */
-    public int findAllCount(String hql, Serializable... values) {
-        String hqlCountAll = "select count(*) from " + this.entityClass.getSimpleName();
-        String counthql = StringUtil.isEmpty(hql) ? hqlCountAll : hql;
-        Query query = this.getSession().createQuery(counthql);
-        for (int i = 0; i < values.length; i++) {
-            query.setParameter(i, values[i]);
-        }
-        int count = ((Long) query.uniqueResult()).intValue();
-        return count;
-    }
-
-    /**
-     * <p>查询对应表所有数据的总数</p>
-     *
-     * @param hql    hql语句
-     * @param values hql中需要注入的参数
-     * @return int 表中记录总数
-     */
-    public int countByHql(String hql, Serializable... values) {
-        if (hql.trim().startsWith("and")) {
-            hql = "from " + entityClass.getSimpleName() + " where 1 = 1 " + hql;
-        }
-        if (hql.trim().startsWith("from")) {
-            hql = "select count(*) " + hql;
-        }
-        Query query = this.getSession().createQuery(hql);
-        for (int i = 0; i < values.length; i++) {
-            query.setParameter(i, values[i]);
-        }
-        int count = ((Long) query.uniqueResult()).intValue();
-        return count;
-    }
-
-    /**
      * <p>根据hql语句和对应的属性值查询</p>
      *
      * @param hql     hql语句
@@ -217,32 +127,6 @@ public class BaseDao<T extends Serializable> {
         for (int i = 0; i < objects.length; i++) {
             query.setParameter(i, objects[i]);
         }
-        list = query.list();
-        return list;
-    }
-
-    /**
-     * <p>通过编写hql查询,来进行分页（分页）</p>
-     *
-     * @param hql     hql语句
-     * @param start   起始位置
-     * @param limit   总数
-     * @param objects hql中需要注入的参数
-     * @return List<T> 符合条件的对象列表
-     */
-    @SuppressWarnings("unchecked")
-    public List<T> findByHqlPage(String hql, int start, int limit, Object... objects) {
-        if (hql.trim().startsWith("and")) {
-            hql = "from " + entityClass.getSimpleName() + " where 1 = 1 " + hql;
-        }
-        List<T> list = null;
-        Query query = this.getSession().createQuery(hql);
-        for (int i = 0; i < objects.length; i++) {
-            query.setParameter(i, objects[i]);
-        }
-        query.setFirstResult(start);
-        query.setMaxResults(limit);
-
         list = query.list();
         return list;
     }
@@ -301,46 +185,6 @@ public class BaseDao<T extends Serializable> {
     }
 
     /**
-     * <p>通过一个属性和对应值去相关表中查询数据（分页）</p>
-     *
-     * @param propertyName  属性名
-     * @param value 对应属性值
-     * @param start 起始位置
-     * @param limit 总数
-     * @return List<T> 符合条件的对象列表
-     */
-    public List<T> findByProperty(String propertyName, Serializable value, long start, long limit) {
-        String hql = "from " + entityClass.getSimpleName() + " where " + propertyName + " = ?";
-        Query query = this.getSession().createQuery(hql);
-        query.setParameter(0, value);
-        query.setFirstResult((int) start);
-        query.setMaxResults((int) limit);
-        @SuppressWarnings("unchecked")
-        List<T> list = query.list();
-        return list;
-    }
-
-    /**
-     * <p>通过一个属性和对应值去相关表中查询数据(分页)</p>
-     *
-     * @param propertyName  属性名
-     * @param value 对应属性值
-     * @param start 起始位置
-     * @param limit 总数
-     * @return List<T> 符合条件的对象列表
-     */
-    public List<T> findByPropertyPage(String propertyName, Serializable value, int start, int limit) {
-        String hql = "from " + entityClass.getSimpleName() + " where " + propertyName + " like ?";
-        Query query = this.getSession().createQuery(hql);
-        query.setParameter(0, "%" + value + "%");
-        query.setFirstResult(start);
-        query.setMaxResults(limit);
-        @SuppressWarnings("unchecked")
-        List<T> list = query.list();
-        return list;
-    }
-
-    /**
      * <p>通过属性名和属性值查询唯一对象</p>
      *
      * @param propertyName 属性名
@@ -353,22 +197,6 @@ public class BaseDao<T extends Serializable> {
         Query query = this.getSession().createQuery(hql);
         query.setParameter(0, value);
         return (T) query.uniqueResult();
-    }
-
-    /**
-     * <p>查询所有数据（分页）</p>
-     *
-     * @param start 起始位置
-     * @param limit 总数
-     * @return List<T> 符合条件的对象列表
-     */
-    @SuppressWarnings("unchecked")
-    public List<T> findAll(int start, int limit) {
-        String hql = "from " + entityClass.getSimpleName();
-        Query query = this.getSession().createQuery(hql);
-        query.setFirstResult(start);
-        query.setMaxResults(limit);
-        return query.list();
     }
 
     /**
@@ -385,32 +213,6 @@ public class BaseDao<T extends Serializable> {
         String hql = "delete " + entityClass.getSimpleName() + " where " + propertyName + " =  ?";
         Query query = this.getSession().createQuery(hql);
         query.setParameter(0, value);
-        return query.executeUpdate();
-    }
-
-    /**
-     * <p>通过多个属性名与属性值删除数据</p>
-     *
-     * @param propertyNames 属性名数组
-     * @param values        属性值数组
-     * @return
-     */
-    public int deleteByProperties(String[] propertyNames, Object[] values) {
-        if (propertyNames == null || values == null || propertyNames.length == 0 || values.length == 0) {
-            throw new IllegalArgumentException();
-        }
-        StringBuffer hql = new StringBuffer("delete from " + entityClass.getSimpleName() + " where 1=1 ");
-        for (int i = 0; i < propertyNames.length; i++) {
-            if (i > 0) {
-                hql.append(" and " + propertyNames[i] + " =?");
-            } else {
-                hql.append(propertyNames[i] + " =?");
-            }
-        }
-        Query query = this.getSession().createQuery(hql.toString());
-        for (int j = 0; j < values.length; j++) {
-            query.setParameter(j, values[j]);
-        }
         return query.executeUpdate();
     }
 }
