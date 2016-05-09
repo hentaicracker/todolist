@@ -30,7 +30,7 @@
     </div>
     <div class="sign-out">
       <i class="fa fa-sign-out sign-out-icon" aria-hidden="true"></i>
-      <a>退出</a>
+      <a v-link="'login'">退出</a>
     </div>
   </div>
 </template>

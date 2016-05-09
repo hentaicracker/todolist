@@ -7,7 +7,8 @@ Vue.use(Vuex)
 const state = {
   tasks: [],
   user: {},
-  activeTask: {}
+  activeTask: {},
+  active: false
 }
 
 const mutations = {
@@ -22,12 +23,13 @@ const mutations = {
 
   ADD_TASK (state) {
     const newTask = {
-      task_name: '',
+      task_name: '新任务',
       task_content: '',
       task_done: false
     }
     state.tasks.push(newTask)
     state.activeTask = newTask
+    state.active = true
   },
 
   TOGGLE_TASK (state, task) {
@@ -42,8 +44,9 @@ const mutations = {
     state.activeTask.task_content = text
   },
 
-  DELETE_TASK (state, task) {
-    state.tasks.$remove(task)
+  DELETE_TASK (state) {
+    state.tasks.$remove(state.activeTask)
+    state.activeTask = state.tasks[0]
   },
 
   SET_ACTIVE_TASK (state, task) {
