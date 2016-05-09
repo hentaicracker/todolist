@@ -62,7 +62,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         if (!MD5Util.encode2hex(old_password).equals(user.getUser_psd())) {
             throw new MessageException("当前密码错误！");
         } else if (old_password.equals(new_password)) {
-            throw new MessageException("新密码不能够与当前密码一致！");
+            throw new MessageException("新密码与当前密码一致，请重新填写！");
         }
         user.setUser_psd(new_password);
         userDao.saveOrUpdate(user);
