@@ -201,6 +201,7 @@
         color: #000;
         display: inline-block;
         width: 360px;
+        cursor: pointer;
       }
 
       .time {
@@ -239,12 +240,37 @@
     padding: 0 40px;
     line-height: 100px;
     font-size: 20px;
+    position: relative;
+    > input {
+      position: absolute;
+      top: 29px;
+      left: 40px;
+      font-size: 20px;
+      width: 260px;
+      height: 40px;
+    }
   }
 
   .detail-content {
+    position: relative;
     padding: 40px;
     height: 500px;
     overflow: auto;
+    > p {
+      width: 400px;
+      height: 420px;
+      content: '';
+    }
+    > textarea {
+      position: absolute;
+      top: 36px;
+      outline: none;
+      width: 398px;
+      height: 420px;
+      border: 0;
+      line-height: 24px;
+      font-size: 16px;
+    }
   }
 
   .delete-btn {

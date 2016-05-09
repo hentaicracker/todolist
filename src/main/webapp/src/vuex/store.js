@@ -24,22 +24,26 @@ const mutations = {
     const newTask = {
       task_name: '',
       task_content: '',
-      done: false
+      task_done: false
     }
     state.tasks.push(newTask)
     state.activeTask = newTask
   },
 
-  TOGGLE_TASK (state) {
-    state.activeTask.done = !state.activeTask.done
+  TOGGLE_TASK (state, task) {
+    task.task_done = !task.task_done
   },
 
-  EDIT_TASK (state, text) {
+  EDIT_TASK_TITLE (state, text) {
+    state.activeTask.task_name = text
+  },
+
+  EDIT_TASK_CONTENT (state, text) {
     state.activeTask.task_content = text
   },
 
-  DELETE_TASK (state) {
-    state.tasks.$remove(state.activeTask)
+  DELETE_TASK (state, task) {
+    state.tasks.$remove(task)
   },
 
   SET_ACTIVE_TASK (state, task) {
