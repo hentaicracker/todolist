@@ -51,43 +51,4 @@
 
         <!--</mvc:message-converters>-->
     </mvc:annotation-driven>
-    <!--对静态资源的访问-->
-    <!--<mvc:resources location="/dist/" mapping="/dist/**"/>-->
-    <!--<mvc:resources location="/libs/" mapping="/libs/**"/>-->
-    <!--<mvc:resources location="/pages/" mapping="/pages/**"/>-->
-    <!--<mvc:resources location="/src/" mapping="/src/**"/>-->
-
-    <!-- 配置视图的显示 -->
-    <bean id="velocityConfigurer"
-          class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <!-- 模板存放的路径 -->
-        <!--<property name="resourceLoaderPath" value="/WEB-INF/velocityTemplate/"/>-->
-        <property name="resourceLoaderPath" value="/pages/"/>
-        <!-- Velocity配置文件 -->
-        <property name="configLocation" value="classpath:velocity.properties"/>
-    </bean>
-    <!-- 配置velocity引擎 -->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-
-        <!-- 视图文件的后缀名 -->
-        <property name="suffix" value=".html"/>
-        <!--<property name="toolboxConfigLocation" value="/WEB-INF/tools.xml"/>-->
-        <!--toolbox配置文件路径-->
-        <property name="dateToolAttribute" value="date"/>
-        <!--日期函数名称-->
-        <property name="numberToolAttribute" value="number"/>
-        <!--数字函数名称-->
-        <property name="contentType" value="text/html;charset=UTF-8"/>
-        <property name="exposeSpringMacroHelpers" value="true"/>
-        <!--是否使用spring对宏定义的支持-->
-        <property name="exposeRequestAttributes" value="true"/>
-        <!--是否开放request属性-->
-        <property name="requestContextAttribute" value="rc"/>
-        <!--request属性引用名称-->
-
-        <!--&lt;!&ndash;指定默认layout文件&ndash;&gt;-->
-        <!--<property name="layoutUrl" value="layout/default.vm"/>-->
-    </bean>
-
-
 </beans>

@@ -1,5 +1,6 @@
 package com.cjs.service.impl;
 
+import com.cjs.dao.TaskDao;
 import com.cjs.model.Task;
 import com.cjs.service.TaskService;
 import com.cjs.service.base.BaseServiceImpl;
@@ -12,20 +13,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskService {
     @Autowired
-    private TaskService taskService;
+    private TaskDao taskDao;
 
     @Override
     public void addTask(Task task) {
-        taskService.addTask(task);
+        taskDao.save(task);
     }
 
     @Override
     public void deleteTask(Integer task_id) {
-        taskService.deleteTask(task_id);
+        taskDao.deleteByProperty("task_id", task_id);
     }
 
     @Override
     public void modifyTask(Task task) {
-        taskService.modifyTask(task);
+        taskDao.update(task);
     }
 }

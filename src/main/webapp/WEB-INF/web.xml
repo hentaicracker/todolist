@@ -8,7 +8,7 @@
     <param-value>classpath:spring.xml,classpath:spring-hibernate.xml</param-value>
   </context-param>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
@@ -75,5 +75,4 @@
   <listener>
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
-
 </web-app>

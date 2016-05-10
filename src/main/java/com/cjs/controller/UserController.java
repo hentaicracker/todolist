@@ -31,10 +31,8 @@ public class UserController extends BaseController {
     @ResponseBody
     public Map<String,Object> userLogin(@RequestBody User user){
         userService.userLogin(user.getUser_name(),user.getUser_psd());
-        return generateSuccessMsg("添加成功!");
+        return generateSuccessMsg("登录成功!");
     }
-
-
 
     @RequestMapping(value="/userRegister")
     @ResponseBody
