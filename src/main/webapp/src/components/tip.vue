@@ -2,8 +2,8 @@
   <div class="tip" v-show="show">
     <div class="content">
       <slot name="body">Hello World!</slot>
+      <span class="close" @click="show = false">+</span>
     </div>
-    <span class="close" @click="show = false">+</span>
   </div>
 </template>
 
@@ -18,15 +18,18 @@ export default {
 <style lang="sass">
 
 .tip {
-  position: relative;
-  margin: 0 auto;
-  min-height: 50px;
-  box-shadow: 0 0 1em #CCC;
-  background-color: #fff;
+  position: fixed;
   top: 30px;
-  max-width: 200px;
+  text-align: center;
+  width: 100%;
 
   .content {
+    position: relative;
+    min-height: 50px;
+    background-color: #fff;
+    box-shadow: 0 0 1em #CCC;
+    max-width: 200px;
+    margin: 0 auto;
     padding: 20px;
     font-size: 16px;
   }

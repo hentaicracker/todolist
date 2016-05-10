@@ -9,7 +9,7 @@
 
 #sidebar-view {
   position: relative;
-  width: 300px;
+  width: 20%;
   height: 100%;
   float: left;
   background-color: $blue;
@@ -28,10 +28,10 @@
 
     span {
       vertical-align: middle;
-      margin-left: 20px;
+      margin-left: 10px;
       color: $white;
       font: {
-        size: 1.5em;
+        size: 1.2em;
         weight: bold;
       }
     }
@@ -101,14 +101,14 @@
     .sign-out-icon {
       position: absolute;
       top: 17px;
-      left: 115px;
+      left: 95px;
       color: $white;
     }
   }
 }
 
 #list-view {
-  width: 500px;
+  width: 40%;
   height: 100%;
   float: left;
   background-color: $border-color;
@@ -236,7 +236,7 @@
 }
 
 #detail-view {
-  margin-left: 800px;
+  margin-left: 60%;
 
   .detail-header {
     height: 100px;
@@ -300,4 +300,22 @@
       }
     }
   }
+}
+
+.expand-transition {
+  transition: all .3s ease;
+  overflow: hidden;
+  height: 20px;
+}
+.expand-enter , .expand-leave{
+  height: 20px;
+  opacity: 0;
+}
+
+.appear-transition {
+  transition: all .2s ease;
+}
+.appear-enter , .appear-leave{
+  top: 0;
+  opacity: 0;
 }
