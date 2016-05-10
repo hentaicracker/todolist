@@ -48,7 +48,7 @@
         display: inline-block;
         height: 100%;
         width: 100%;
-
+        cursor: pointer;
         span{
           margin-left: 70px;
         }
@@ -170,6 +170,20 @@
 
       .t-inner {
         height: 49px;
+        position: relative;
+
+        .toggle{
+          position: absolute;
+          top: 7px;
+          left: -20px;
+          appearance: none;
+          &:after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#B5B5B5" stroke-width="3"/></svg>')
+          }
+          &:checked:after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#436EEE" stroke-width="3"/><path fill="#436EEE" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>')
+          }
+        }
       }
 
       .t-line {
@@ -183,10 +197,11 @@
       }
 
       .t-content {
-        padding-left: 10px;
+        padding-left: 30px;
         color: #000;
         display: inline-block;
         width: 360px;
+        cursor: pointer;
       }
 
       .time {
@@ -208,8 +223,12 @@
     font-size: 30px;
     color: #B5B5B5;
     cursor: pointer;
+    background-color: transparent;
+    transition: 0.2s ease;
+    outline: none;
 
     &:hover {
+      background-color: #fff;
       border-color: $blue;
       color: $blue;
     }
@@ -225,12 +244,45 @@
     padding: 0 40px;
     line-height: 100px;
     font-size: 20px;
+    position: relative;
+    > label {
+      display: inline-block;
+      width: 260px;
+      height: 40px;
+      content: '';
+    }
+    > input {
+      position: absolute;
+      top: 29px;
+      left: 40px;
+      font-size: 20px;
+      width: 260px;
+      height: 40px;
+      font-family: inherit;
+    }
   }
 
   .detail-content {
+    position: relative;
     padding: 40px;
     height: 500px;
     overflow: auto;
+    > p {
+      width: 400px;
+      height: 420px;
+      content: '';
+    }
+    > textarea {
+      position: absolute;
+      top: 36px;
+      outline: none;
+      width: 398px;
+      height: 420px;
+      border: 0;
+      line-height: 24px;
+      font-size: 16px;
+      font-family: inherit;
+    }
   }
 
   .delete-btn {

@@ -1,9 +1,12 @@
 <template>
   <div class="main-container">
 
-    <sidebar :user="user" :show.sync="show"></sidebar>
+    <sidebar :user="user" :show.sync="show" :count="count" :done-count="doneCount"></sidebar>
     <todolist :tasks="tasks | isDone"></todolist>
     <detail></detail>
+    <tip v-show="showError" :show.sync="showError">
+      <span slot="body">{{errorText}}</span>
+    </tip>
 
   </div>
 </template>
@@ -12,41 +15,62 @@
   import sidebar from './sidebar'
   import todolist from './todolist'
   import detail from './detail'
-  import state from '../vuex/store'
+  import tip from './tip'
+  import { getUserData, getTasksData } from '../vuex/actions'
+
+  const filters = {
+    all: tasks => tasks,
+    done: tasks => tasks.filter( (task) => !task.task_done ),
+    undo: tasks => tasks.filter( (task) => task.task_done )
+  }
 
   export default {
 
     name: 'MainView',
 
+    vuex: {
+      getters: {
+        user: state => state.user,
+        tasks: state => state.tasks
+      },
+      actions: {
+        getUserData,
+        getTasksData
+      }
+    },
+
     data () {
-      let userData = state.user
       return {
-        user: userData,
-        tasks: userData.taskLists,
-        show: 'all'
+        show: 'all',
+        filters: filters
       }
     },
 
     filters: {
-      isDone (list) {
-        if (this.show === 'done') {
-          return list.filter( (task) => {
-            task.task_done === true
-          })
-        } else if (this.show === 'undo') {
-          return list.filter( (task) => {
-            task.task_done === false
-          })
-        } else {
-          return
-        }
+      isDone () {
+        return this.filters[this.show](this.tasks)
       }
     },
 
     components: {
       sidebar,
       todolist,
-      detail
+      detail,
+      tip
+    },
+
+    created () {
+      this.getUserData()
+      this.getTasksData()
+    },
+
+    computed: {
+      doneCount () {
+        return this.filters['undo'](this.tasks).length
+      },
+      count () {
+        return this.tasks.length
+      }
     }
 
   }

@@ -6,32 +6,51 @@ Vue.use(Vuex)
 
 const state = {
   tasks: [],
+  user: {},
   activeTask: {},
-  activeList: []
+  active: false
 }
 
 const mutations = {
+
+  RECIEVE_TASKS (state, tasks) {
+    state.tasks = tasks.data
+  },
+
+  RECIEVE_USER (state, user) {
+    state.user = user.data
+  },
 
   ADD_TASK (state) {
     const newTask = {
       task_name: '',
       task_content: '',
-      done: false
+      task_done: false
     }
     state.tasks.push(newTask)
     state.activeTask = newTask
+    state.active = true
   },
 
-  TOGGLE_TASK (state) {
-    state.activeTask.done = !state.activeTask.done
+  TOGGLE_ACTIVE (state) {
+    state.active = false
   },
 
-  EDIT_TASK (state, text) {
+  TOGGLE_TASK (state, task) {
+    task.task_done = !task.task_done
+  },
+
+  EDIT_TASK_TITLE (state, text) {
+    state.activeTask.task_name = text
+  },
+
+  EDIT_TASK_CONTENT (state, text) {
     state.activeTask.task_content = text
   },
 
   DELETE_TASK (state) {
     state.tasks.$remove(state.activeTask)
+    state.activeTask = state.tasks[0]
   },
 
   SET_ACTIVE_TASK (state, task) {
