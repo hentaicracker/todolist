@@ -31,6 +31,15 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
+    public User findUser(String user_name) {
+        User user = userDao.findByPropertyUnique("user_name", user_name);
+        if (user == null) {
+            throw new MessageException("未找到该用户！");
+        }
+        return user;
+    }
+
+    @Override
     public void userLogin(String user_name, String user_psd) {
         if (StringUtil.isEmpty(user_name) || StringUtil.isEmpty(user_psd)) {
             throw new MessageException("请填写你的用户名或密码");
