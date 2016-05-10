@@ -2,6 +2,7 @@ import api from '../api/index'
 import config from '../api/config'
 
 export const addTask = makeAction('ADD_TASK')
+export const toggleActive = makeAction('TOGGLE_ACTIVE')
 export const toggleTask = makeAction('TOGGLE_TASK')
 export const editTaskTitle = makeAction('EDIT_TASK_TITLE')
 export const editTaskContent = makeAction('EDIT_TASK_CONTENT')

@@ -8,8 +8,8 @@
       <input
         class="toggle-input"
         :value="activeTask.task_name"
-        v-show="titleEditing"
-        v-focus="titleEditing"
+        v-show="titleEditing = active ? true : titleEditing"
+        v-focus="titleEditing = active ? true : titleEditing"
         @keyup.enter="doneEdit"
         @keyup.esc="cancelEdit"
         @blur="doneEdit">
@@ -26,7 +26,7 @@
       </textarea>
     </div>
     <div class="delete-btn">
-      <i class="fa fa-pencil" aria-hidden="true" title="编辑"></i>
+      <i class="fa fa-pencil" aria-hidden="true" title="编辑" @click="contentEditing = true"></i>
       <i class="fa fa-floppy-o" aria-hidden="true" title="保存"></i>
       <i class="fa fa-trash" aria-hidden="true" title="删除" @click="deleteTask"></i>
     </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { editTaskTitle, editTaskContent, deleteTask } from '../vuex/actions'
+import { editTaskTitle, editTaskContent, deleteTask, toggleActive } from '../vuex/actions'
 
 export default {
 
@@ -46,7 +46,8 @@ export default {
     actions: {
       editTaskTitle,
       editTaskContent,
-      deleteTask
+      deleteTask,
+      toggleActive
     }
   },
 
@@ -71,11 +72,13 @@ export default {
       } else {
         this.cancelEdit(e)
       }
+      this.toggleActive()
     },
     cancelEdit (e) {
       e.target.value = this.titleEditing ? this.activeTask.task_name : this.activeTask.task_content
       this.titleEditing = false
       this.contentEditing = false
+      this.toggleActive()
     }
   },
 
@@ -88,5 +91,6 @@ export default {
       }
     }
   }
+
 }
 </script>

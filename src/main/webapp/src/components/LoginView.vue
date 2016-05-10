@@ -23,11 +23,15 @@
         <button class="login-btn" @click="login">登录</button>
       </div>
     </div>
+    <tip v-show="showTip" :show.sync="showTip">
+      <span slot="body">{{errorTxt}}</span>
+    </tip>
   </div>
 </template>
 
 <script>
 import config from '../api/config'
+import tip from './tip'
 
 export default {
   name: 'LoginView',
@@ -37,7 +41,9 @@ export default {
       user: {
         username: '',
         password: ''
-      }
+      },
+      showTip: false,
+      errorTxt: ''
     }
   },
 
@@ -58,6 +64,7 @@ export default {
 
   methods: {
     login () {
+      let self = this
       if (this.isValid) {
         this.$http.post(config.loginUrl, {
           username: this.user.username,
@@ -65,13 +72,19 @@ export default {
         }).then( (response) => {
           let data = JSON.parse(response)
           if (data.success) {
-            this.$route.router.go('/user')
+            self.$route.router.go('/user')
           }
         }, (response) => {
-          this.$route.router.go('/')
+          let error = JSON.parse(response)
+          self.showTip = true
+          self.errorTxt = error.responseText
         })
       }
     }
+  },
+
+  components: {
+    tip
   }
 }
 </script>

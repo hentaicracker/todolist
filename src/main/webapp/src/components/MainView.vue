@@ -4,6 +4,9 @@
     <sidebar :user="user" :show.sync="show" :count="count" :done-count="doneCount"></sidebar>
     <todolist :tasks="tasks | isDone"></todolist>
     <detail></detail>
+    <tip v-show="showError" :show.sync="showError">
+      <span slot="body">{{errorText}}</span>
+    </tip>
 
   </div>
 </template>
@@ -12,6 +15,7 @@
   import sidebar from './sidebar'
   import todolist from './todolist'
   import detail from './detail'
+  import tip from './tip'
   import { getUserData, getTasksData } from '../vuex/actions'
 
   const filters = {
@@ -51,7 +55,8 @@
     components: {
       sidebar,
       todolist,
-      detail
+      detail,
+      tip
     },
 
     created () {

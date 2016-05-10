@@ -23,13 +23,17 @@ const mutations = {
 
   ADD_TASK (state) {
     const newTask = {
-      task_name: '新任务',
+      task_name: '',
       task_content: '',
       task_done: false
     }
     state.tasks.push(newTask)
     state.activeTask = newTask
     state.active = true
+  },
+
+  TOGGLE_ACTIVE (state) {
+    state.active = false
   },
 
   TOGGLE_TASK (state, task) {
