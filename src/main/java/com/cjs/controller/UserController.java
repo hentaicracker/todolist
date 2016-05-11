@@ -27,6 +27,12 @@ public class UserController extends BaseController {
         userService.checkUsername(user_name);
     }
 
+    @RequestMapping(value="/findUser")
+    @ResponseBody
+    public void findUser(String user_name){
+        userService.findUser(user_name);
+    }
+
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> userLogin(@RequestBody User user){

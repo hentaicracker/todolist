@@ -13,6 +13,13 @@ public interface UserService {
     void checkUsername(String user_name);
 
     /**
+     * 根据用户名拿到用户对象
+     * @param user_name
+     * @return
+     */
+    User findUser(String user_name);
+
+    /**
      * 用户登录
      * @param user_name
      * @param user_psd
