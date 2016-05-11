@@ -1,4 +1,4 @@
-package com.cjs.util.MD5Util;
+package com.cjs.util.md5;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

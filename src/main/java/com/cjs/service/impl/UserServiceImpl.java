@@ -4,7 +4,7 @@ import com.cjs.dao.UserDao;
 import com.cjs.model.User;
 import com.cjs.service.UserService;
 import com.cjs.service.base.BaseServiceImpl;
-import com.cjs.util.MD5Util.MD5Util;
+import com.cjs.util.md5.MD5Util;
 import com.cjs.util.exception.MessageException;
 import com.cjs.util.session.SessionUtil;
 import com.cjs.util.string.StringUtil;
