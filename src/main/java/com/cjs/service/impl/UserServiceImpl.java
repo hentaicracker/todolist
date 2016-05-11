@@ -24,10 +24,19 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void checkUsername(String user_name) {
-        User user = userDao.findByPropertyUnique("user_name", user_name.trim());
+        User user = userDao.findByPropertyUnique("user_name", user_name);
         if (user != null) {
             throw new MessageException("用户名已存在！");
         }
+    }
+
+    @Override
+    public User findUser(String user_name) {
+        User user = userDao.findByPropertyUnique("user_name", user_name);
+        if (user == null) {
+            throw new MessageException("未找到该用户！");
+        }
+        return user;
     }
 
     @Override

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -29,6 +31,24 @@ public class BaseDao<T extends Serializable> {
     public void setEntityClass(Class entityClass) {
         this.entityClass = entityClass;
     }
+
+    @SuppressWarnings("rawtypes")
+    public BaseDao() {
+        Type type = this.getClass().getGenericSuperclass();
+        if (!this.getClass().getSimpleName().equals("BaseDao") && !(type instanceof Class)) {
+            if (type.toString().indexOf("BaseDao") != -1) {
+                ParameterizedType type1 = (ParameterizedType) type;
+                Type[] types = type1.getActualTypeArguments();
+                setEntityClass((Class) types[0]);
+            } else {
+                type = ((Class) type).getGenericSuperclass();
+                ParameterizedType type1 = (ParameterizedType) type;
+                Type[] types = type1.getActualTypeArguments();
+                setEntityClass((Class) types[0]);
+            }
+        }
+    }
+
 
     public Session getSession() {
         session = sessionFactory.getCurrentSession();
