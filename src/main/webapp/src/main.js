@@ -7,7 +7,11 @@ import Router from 'Vue-router'
 import App from 'components/App'
 import LoginView from 'components/LoginView'
 import MainView from 'components/MainView'
+import Statistics from 'components/Statistics'
 import VueResource from 'vue-resource'
+import vueEcharts from './directives/echarts'
+
+Vue.directive('echarts', vueEcharts)
 
 Vue.use(VueResource)
 Vue.use(Router)
@@ -16,10 +20,19 @@ var router = new Router()
 
 router.map({
   '/login': {
-    component: LoginView
+    component (resolve) {
+      require(['./components/LoginView'], resolve)
+    }
   },
   '/user': {
-    component: MainView
+    component (resolve) {
+      require(['./components/MainView'], resolve)
+    }
+  },
+  '/stat': {
+    component (resolve) {
+      require(['./components/Statistics'], resolve)
+    }
   }
 })
 

@@ -26,6 +26,12 @@
             <span>{{doneCount}}</span>
           </a>
         </li>
+        <li>
+          <a v-link="'stat'">
+            <i class="fa fa-area-chart list-icon" aria-hidden="true"></i>
+            <span>统计</span>
+          </a>
+        </li>
       </ul>
     </div>
     <div class="sign-out">
