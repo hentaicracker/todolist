@@ -1,17 +1,30 @@
 <template>
-<div class="stat-container" v-echarts="pieChartOption">
-</div>
-<a class="stat-close" title="关闭" v-link="'user'">+</a>
+  <div class="stat-container" v-echarts="pieChartOption"></div>
+  <a class="stat-close" title="关闭" v-link="'user'">+</a>
 </template>
 
 <script>
 export default {
 
-  name: 'Statistics',
+  name: 'StatView',
 
   data () {
     return {
-      pieChartOption: null
+      doneCount: this.tasks.filter( (task) => !task.task_done ).length
+    }
+  },
+
+  computed: {
+    undoCount () {
+      let count = this.tasks.length
+      let doneCount = this.tasks.filter( (task) => !task.task_done ).length
+      return count - doneCount
+    }
+  },
+
+  vuex: {
+    getters: {
+      tasks: state => state.tasks
     }
   },
 
@@ -34,8 +47,8 @@ export default {
               type: 'pie',
               radius: '55%',
               data:[
-                  {value:200, name:'已完成'},
-                  {value:300, name:'未完成'}
+                  {value: vm.doneCount, name:'已完成'},
+                  {value: vm.undoCount, name:'未完成'}
               ],
               roseType: 'angle',
               label: {

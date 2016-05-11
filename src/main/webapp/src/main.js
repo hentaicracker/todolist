@@ -7,7 +7,7 @@ import Router from 'Vue-router'
 import App from 'components/App'
 import LoginView from 'components/LoginView'
 import MainView from 'components/MainView'
-import Statistics from 'components/Statistics'
+import StatView from 'components/StatView'
 import VueResource from 'vue-resource'
 import vueEcharts from './directives/echarts'
 
@@ -31,7 +31,7 @@ router.map({
   },
   '/stat': {
     component (resolve) {
-      require(['./components/Statistics'], resolve)
+      require(['./components/StatView'], resolve)
     }
   }
 })
