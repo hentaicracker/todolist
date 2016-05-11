@@ -23,7 +23,7 @@
         <button class="login-btn" @click="login">登录</button>
       </div>
     </div>
-    <tip v-show="showTip" :show.sync="showTip">
+    <tip v-show="showTip" :show.sync="showTip" transition="appear">
       <span slot="body">{{errorTxt}}</span>
     </tip>
   </div>
