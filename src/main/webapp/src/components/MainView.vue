@@ -5,7 +5,7 @@
     <todolist :tasks="tasks | isDone"></todolist>
     <detail></detail>
     <tip v-show="showError" :show.sync="showError" transition="appear">
-      <span slot="body">{{errorText}}666</span>
+      <span slot="body">{{errorText}}</span>
     </tip>
 
   </div>

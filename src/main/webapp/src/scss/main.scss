@@ -304,11 +304,9 @@
 
 .expand-transition {
   transition: all .3s ease;
-  overflow: hidden;
-  height: 20px;
 }
 .expand-enter , .expand-leave{
-  height: 20px;
+  height: 0;
   opacity: 0;
 }
 
