@@ -21,9 +21,9 @@ CREATE TABLE task (
 	start_time datetime DEFAULT null,
 	end_time datetime DEFAULT null,
 	task_prioity int(10),
-	task_longitude long,
-	task_latitude long,
-	task_done int(10),
+	task_longitude int(10),
+	task_latitude int(10),
+	task_done int(10) DEFAULT 0,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

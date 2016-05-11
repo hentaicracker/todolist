@@ -51,4 +51,10 @@
 
         <!--</mvc:message-converters>-->
     </mvc:annotation-driven>
+
+    <!-- 默认对静态资源文件的访问-->
+    <mvc:default-servlet-handler/>
+    <!--对静态资源的访问-->
+    <mvc:resources location="/src/" mapping="/src/**"/>
+    <mvc:resources location="/build/" mapping="/build/**"/>
 </beans>
