@@ -69,11 +69,14 @@ export default {
           let data = JSON.parse(response)
           if (data.success) {
             self.$route.router.go('/user')
+          } else {
+            let error = JSON.parse(response)
+            self.showTip = true
+            self.errorTxt = error.responseText
           }
-        }, (response) => {
-          let error = JSON.parse(response)
+        }, () => {
           self.showTip = true
-          self.errorTxt = error.responseText
+          self.errorTxt = '发生了未知的错误'
         })
       } else {
         this.showTip = true
