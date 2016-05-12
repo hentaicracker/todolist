@@ -4,7 +4,7 @@
     <sidebar :user="user" :show.sync="show" :count="count" :done-count="doneCount"></sidebar>
     <todolist :tasks="tasks | isDone"></todolist>
     <detail></detail>
-    <tip v-show="showError" :show.sync="showError" transition="appear">
+    <tip v-show="showTip" :show.sync="showTip" transition="appear">
       <span slot="body">{{errorText}}</span>
     </tip>
 
@@ -44,7 +44,8 @@
     data () {
       return {
         show: 'all',
-        filters: filters
+        filters: filters,
+        showTip: this.showError
       }
     },
 
