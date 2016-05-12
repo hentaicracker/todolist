@@ -5,7 +5,7 @@
         <h1>个人任务管理系统</h1>
         <h2>登录</h2>
       </div>
-      <div class="login-main" :class="{redBorder: !validation.password || !validation.name}">
+      <div class="login-main">
         <div class="input-row">
           <label for="input-username" class="input-label">用户名</label>
           <input class="login-input" v-model="user.username">
@@ -15,10 +15,6 @@
           <input class="login-input" v-model="user.password" type="password">
         </div>
       </div>
-      <ul class="errors">
-        <li v-show="">用户名为空</li>
-        <li v-show="">密码为空</li>
-      </ul>
       <div class="login-footer">
         <button class="login-btn" @click="login">登录</button>
       </div>
@@ -79,6 +75,9 @@ export default {
           self.showTip = true
           self.errorTxt = error.responseText
         })
+      } else {
+        this.showTip = true
+        this.errorTxt = '用户名或密码为空！'
       }
     }
   },

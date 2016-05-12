@@ -47,8 +47,8 @@ export default {
               type: 'pie',
               radius: '55%',
               data:[
-                  {value: vm.doneCount, name:'已完成'},
-                  {value: vm.undoCount, name:'未完成'}
+                  {value: vm.doneCount * 100, name:'已完成'},
+                  {value: vm.undoCount * 100, name:'未完成'}
               ],
               roseType: 'angle',
               label: {

@@ -8,7 +8,9 @@ const state = {
   tasks: [],
   user: {},
   activeTask: {},
-  active: false
+  active: false,
+  showError: false,
+  errorText: ''
 }
 
 const mutations = {
@@ -21,8 +23,9 @@ const mutations = {
     state.user = user.data
   },
 
-  ADD_TASK (state) {
+  ADD_TASK (state, task) {
     const newTask = {
+      task_id: task.task_id,
       task_name: '',
       task_content: '',
       task_done: false
@@ -55,6 +58,11 @@ const mutations = {
 
   SET_ACTIVE_TASK (state, task) {
     state.activeTask = task
+  },
+
+  SHOW_ERROR (state, error) {
+    state.showError = true
+    state.errorText = error
   }
 
 }

@@ -31,7 +31,9 @@
     vuex: {
       getters: {
         user: state => state.user,
-        tasks: state => state.tasks
+        tasks: state => state.tasks,
+        errorText: state => state.errorText,
+        showError: state => state.showError
       },
       actions: {
         getUserData,
@@ -42,9 +44,7 @@
     data () {
       return {
         show: 'all',
-        filters: filters,
-        errorText: '',
-        showError: false
+        filters: filters
       }
     },
 
