@@ -29,6 +29,7 @@ export const addTask = ({dispatch}) => {
 }
 export const editTaskTitle = ({dispatch}, value) => {
   api.sendData(config.saveTaskUrl, {
+    id: store.state.activeTask.id,
     task_name: value
   }, (response) => {
     var data = eval(response)
@@ -43,6 +44,7 @@ export const editTaskTitle = ({dispatch}, value) => {
 }
 export const editTaskContent = ({dispatch}, value) => {
   api.sendData(config.saveContentUrl, {
+    id: store.state.activeTask.id,
     task_content: value
   }, (response) => {
     var data = eval(response)
@@ -57,7 +59,7 @@ export const editTaskContent = ({dispatch}, value) => {
 }
 export const deleteTask = ({dispatch}) => {
   api.sendData(config.deleteTaskUrl, {
-    task_id: store.state.activeTask.task_id
+    id: store.state.activeTask.id
   }, (response) => {
     var data = eval(response)
     if(data.success) {
@@ -71,7 +73,7 @@ export const deleteTask = ({dispatch}) => {
 }
 export const toggleTask = ({dispatch}) => {
   api.sendData(config.toggleTaskUrl, {
-    task_id: store.state.activeTask.task_id
+    id: store.state.activeTask.id
   }, (response) => {
     var data = eval(response)
     if(data.success) {
@@ -85,7 +87,7 @@ export const toggleTask = ({dispatch}) => {
 }
 export const addTime = ({dispatch}, time) => {
   api.sendData(config.addTimeUrl, {
-    task_id: store.state.activeTask.task_id,
+    id: store.state.activeTask.id,
     end_time: time
   }, (response) => {
     var data = eval(response)

@@ -6,7 +6,7 @@
     </div>
     <div class="todo-list">
       <ul>
-        <li v-for="task in tasks | search" :class="{active: task.task_id === activeTask.task_id}" transition="expand">
+        <li v-for="task in tasks | search" :class="{active: task.id === activeTask.id}" transition="expand">
           <div class="t-inner">
             <input class="toggle" type="checkbox" :checked="task.task_done" @change="toggleTask(task)">
             <a class="t-content" @click="updateActiveTask(task)">{{task.task_name}}</a>

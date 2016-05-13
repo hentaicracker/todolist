@@ -25,7 +25,7 @@ const mutations = {
 
   ADD_TASK (state, id) {
     const newTask = {
-      task_id: id,
+      id: id,
       task_name: '',
       task_content: '',
       task_done: false
