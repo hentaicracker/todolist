@@ -1,7 +1,7 @@
 module.exports = {
   loginUrl: 'user/userLogin',
   userDataUrl: 'user/findCurrentUser',
-  tasksUrl: 'user/findUserOwnTask',
+  tasksUrl: 'task/findUserOwnTask',
   saveTaskUrl: 'task/updateTask',
   saveContentUrl: 'task/updateTask',
   toggleTaskUrl: '',
