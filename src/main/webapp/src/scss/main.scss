@@ -260,6 +260,19 @@
       height: 40px;
       font-family: inherit;
     }
+
+    .time {
+      float: right;
+
+      > label {
+        cursor: pointer;
+      }
+
+      > input {
+        width: 120px;
+        font-size: 20px;
+      }
+    }
   }
 
   .detail-content {

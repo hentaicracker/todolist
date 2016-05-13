@@ -10,8 +10,10 @@ import MainView from 'components/MainView'
 import StatView from 'components/StatView'
 import VueResource from 'vue-resource'
 import vueEcharts from './directives/echarts'
+import pikaday from './directives/pikaday'
 
 Vue.directive('echarts', vueEcharts)
+Vue.directive('pikaday', pikaday)
 
 Vue.use(VueResource)
 Vue.use(Router)

@@ -76,3 +76,17 @@ export const toggleTask = ({dispatch}) => {
     dispatch('SHOW_ERROR', '网络错误')
   })
 }
+export const addTime = ({dispatch}, time) => {
+  api.sendData(config.addTimeUrl, {
+    task_id: store.state.activeTask.task_id,
+    end_time: time
+  }, (response) => {
+    if(response.success) {
+      dispatch('UPDATE_TIME', time)
+    } else {
+      dispatch('SHOW_ERROR', response.msg)
+    }
+  }, () => {
+    dispatch('SHOW_ERROR', '网络错误')
+  })
+}

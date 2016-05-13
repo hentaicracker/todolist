@@ -63,6 +63,10 @@ const mutations = {
   SHOW_ERROR (state, error) {
     state.showError = true
     state.errorText = error
+  },
+
+  UPDATE_TIME (state, time) {
+    state.activeTask.end_time = time
   }
 
 }

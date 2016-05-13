@@ -6,5 +6,6 @@ module.exports = {
   saveContentUrl: '',
   toggleTaskUrl: '',
   addTaskUrl: '',
-  deleteTaskUrl: ''
+  deleteTaskUrl: '',
+  addTimeUrl: ''
 }
