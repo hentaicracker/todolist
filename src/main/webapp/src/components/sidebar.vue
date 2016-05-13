@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar-view">
     <div class="user">
-      <img :src="user.avatar">
+      <img :src="user.user_avatar">
       <span>{{user.nick_name}}</span>
     </div>
     <div class="project-list">

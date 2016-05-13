@@ -1,6 +1,6 @@
 module.exports = {
-  loginUrl: '/data.json',
-  userDataUrl: '/user.json',
+  loginUrl: '/user/userLogin',
+  userDataUrl: '/user/findCurrentUser',
   tasksUrl: '/tasks.json',
   saveTaskUrl: '',
   saveContentUrl: '',
