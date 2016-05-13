@@ -20,7 +20,7 @@ CREATE TABLE task (
 	task_content longtext,
 	start_time datetime DEFAULT null,
 	end_time datetime DEFAULT null,
-	task_prioity int(10),
+	task_priority int(10),
 	task_longitude int(10),
 	task_latitude int(10),
 	task_done int(10) DEFAULT 0,
