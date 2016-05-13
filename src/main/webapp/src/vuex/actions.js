@@ -16,8 +16,8 @@ export const getTasksData = ({dispatch}) => {
   })
 }
 export const getUserData = ({dispatch}) => {
-  api.getData(config.userDataUrl, (user) => {
-    var user = eval(user)
+  api.getData(config.userDataUrl, (data) => {
+    var user = eval(user.user)
     dispatch('RECIEVE_USER', user)
   })
 }
