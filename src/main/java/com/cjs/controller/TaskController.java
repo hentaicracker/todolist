@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * Created by xiaowu on 2016/5/9.
  */
@@ -34,4 +36,11 @@ public class TaskController extends BaseController {
     public void modifyTask(Task task){
         taskService.modifyTask(task);
     }
+
+    @RequestMapping(value="/modifyTask")
+    @ResponseBody
+    public List<Task> findUserOwnTask() {
+        return taskService.findUserOwnTask();
+    }
+
 }
