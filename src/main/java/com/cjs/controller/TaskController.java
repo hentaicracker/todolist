@@ -37,7 +37,7 @@ public class TaskController extends BaseController {
         taskService.modifyTask(task);
     }
 
-    @RequestMapping(value="/modifyTask")
+    @RequestMapping(value="/findUserOwnTask")
     @ResponseBody
     public List<Task> findUserOwnTask() {
         return taskService.findUserOwnTask();
