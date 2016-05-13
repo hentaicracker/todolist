@@ -13,6 +13,7 @@ public class User implements Serializable {
     private String user_name;
     private String user_psd;
     private Integer user_type;
+    private String nick_name;
     private String user_avatar;
 
     @Id
@@ -51,6 +52,16 @@ public class User implements Serializable {
 
     public void setUser_type(Integer user_type) {
         this.user_type = user_type;
+    }
+
+
+    @Column(name="nick_name",length=255)
+    public String getNick_name() {
+        return nick_name;
+    }
+
+    public void setNick_name(String nick_name) {
+        this.nick_name = nick_name;
     }
 
     @Column(name="user_avatar",length=255)

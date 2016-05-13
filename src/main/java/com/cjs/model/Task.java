@@ -26,7 +26,7 @@ public class Task implements Serializable {
     private Integer task_priority;//优先级
     private String task_longitude;//经度
     private String task_latitude;//纬度
-    private Integer task_done;//是否完成  1是  2否
+    private Integer task_done;//是否完成  1是  0否
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
