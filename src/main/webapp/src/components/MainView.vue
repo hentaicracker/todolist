@@ -4,7 +4,7 @@
     <sidebar :user="user" :show.sync="show" :count="count" :done-count="doneCount"></sidebar>
     <todolist :tasks="tasks | isDone"></todolist>
     <detail></detail>
-    <tip v-show="showError" :show.sync="showError" transition="appear">
+    <tip v-show="showTip" :show.sync="showTip" transition="appear">
       <span slot="body">{{errorText}}</span>
     </tip>
 
@@ -31,7 +31,9 @@
     vuex: {
       getters: {
         user: state => state.user,
-        tasks: state => state.tasks
+        tasks: state => state.tasks,
+        errorText: state => state.errorText,
+        showError: state => state.showError
       },
       actions: {
         getUserData,
@@ -43,8 +45,7 @@
       return {
         show: 'all',
         filters: filters,
-        errorText: '',
-        showError: false
+        showTip: this.showError
       }
     },
 

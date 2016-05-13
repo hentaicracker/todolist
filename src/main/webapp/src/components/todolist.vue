@@ -10,7 +10,7 @@
           <div class="t-inner">
             <input class="toggle" type="checkbox" :checked="task.task_done" @change="toggleTask(task)">
             <a class="t-content" @click="updateActiveTask(task)">{{task.task_name}}</a>
-            <span class="time">3月13日</span>
+            <span class="time">{{task.end_time}}</span>
           </div>
           <div class="t-line bottom"></div>
         </li>
