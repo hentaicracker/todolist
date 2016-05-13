@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -31,9 +32,11 @@ public class UserController extends BaseController {
 
     @RequestMapping(value="/findCurrentUser")
     @ResponseBody
-    public Map<String,Object> findCurrentUser(){
-        userService.findCurrentUser();
-        return generateSuccessMsg("查询当前用户对象成功！");
+    public Map<String, Object> findCurrentUser(){
+        User user = userService.findCurrentUser();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("user", user);
+        return map;
     }
 
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
