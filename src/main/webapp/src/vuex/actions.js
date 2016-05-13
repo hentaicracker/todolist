@@ -20,8 +20,8 @@ export const getUserData = ({dispatch}) => {
   })
 }
 export const addTask = ({dispatch}) => {
-  api.getData(config.addTaskUrl, (task) => {
-    dispatch('ADD_TASK', task)
+  api.getData(config.addTaskUrl, (id) => {
+    dispatch('ADD_TASK', id)
   })
 }
 export const editTaskTitle = ({dispatch}, value) => {

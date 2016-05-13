@@ -23,9 +23,9 @@ const mutations = {
     state.user = user.data
   },
 
-  ADD_TASK (state, task) {
+  ADD_TASK (state, id) {
     const newTask = {
-      task_id: task.id,
+      task_id: id,
       task_name: '',
       task_content: '',
       task_done: false
