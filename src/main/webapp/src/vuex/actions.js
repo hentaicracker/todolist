@@ -1,4 +1,5 @@
 import api from '../api/index'
+import util from '../api/util'
 import config from '../api/config'
 import store from './store'
 
@@ -22,6 +23,7 @@ export const getUserData = ({dispatch}) => {
 }
 export const addTask = ({dispatch}) => {
   api.getData(config.addTaskUrl, (id) => {
+    var id = util.checkoutData(id)
     dispatch('ADD_TASK', id)
   })
 }
