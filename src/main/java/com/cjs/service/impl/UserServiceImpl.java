@@ -47,6 +47,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
                 throw new MessageException("您的密码不正确，请填写正确的密码");
             }
             SessionUtil.bindSession("user", user);
+
         }
 
     }

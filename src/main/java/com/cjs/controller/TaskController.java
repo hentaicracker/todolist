@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiaowu on 2016/5/9.
@@ -21,20 +22,23 @@ public class TaskController extends BaseController {
 
     @RequestMapping(value="/addTask")
     @ResponseBody
-    public void addTask(Task task){
+    public Map<String,Object> addTask(Task task){
         taskService.addTask(task);
+        return generateSuccessMsg("添加任务成功！");
     }
 
     @RequestMapping(value="/deleteTask")
     @ResponseBody
-    public void deleteTask(Integer task_id){
+    public Map<String,Object> deleteTask(Integer task_id){
         taskService.deleteTask(task_id);
+        return generateSuccessMsg("删除任务成功！");
     }
 
     @RequestMapping(value="/modifyTask")
     @ResponseBody
-    public void modifyTask(Task task){
+    public Map<String,Object> modifyTask(Task task){
         taskService.modifyTask(task);
+        return generateSuccessMsg("修改任务成功！");
     }
 
     @RequestMapping(value="/findUserOwnTask")
