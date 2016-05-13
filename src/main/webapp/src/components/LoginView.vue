@@ -63,8 +63,8 @@ export default {
       let self = this
       if (this.isValid) {
         this.$http.post(config.loginUrl, {
-          username: this.user.username,
-          password: this.user.password
+          user_name: this.user.username,
+          user_psd: this.user.password
         }).then( (response) => {
           let data = JSON.parse(response)
           if (data.success) {
