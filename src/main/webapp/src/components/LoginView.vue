@@ -66,11 +66,12 @@ export default {
           user_name: this.user.username,
           user_psd: this.user.password
         }).then( (response) => {
-          if (response.success) {
+          var data = eval(response)
+          if (data.success) {
             self.$route.router.go('/user')
           } else {
             self.showTip = true
-            self.errorTxt = response.msg
+            self.errorTxt = data.msg
           }
         }, () => {
           self.showTip = true
