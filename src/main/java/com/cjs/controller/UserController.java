@@ -3,6 +3,7 @@ package com.cjs.controller;
 import com.cjs.controller.base.BaseController;
 import com.cjs.model.User;
 import com.cjs.service.UserService;
+import com.cjs.util.session.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,10 +28,10 @@ public class UserController extends BaseController {
         userService.checkUsername(user_name);
     }
 
-    @RequestMapping(value="/findUser")
+    @RequestMapping(value="/findCurrentUser")
     @ResponseBody
-    public void findUser(String user_name){
-        userService.findUser(user_name);
+    public void findCurrentUser(){
+        userService.findCurrentUser();
     }
 
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)

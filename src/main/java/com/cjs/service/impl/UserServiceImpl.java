@@ -31,7 +31,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public User findUser(String user_name) {
+    public User findCurrentUser() {
+        String user_name = SessionUtil.getCurrentUser().getUser_name();
         User user = userDao.findByPropertyUnique("user_name", user_name);
         if (user == null) {
             throw new MessageException("未找到该用户！");
