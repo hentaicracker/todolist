@@ -14,6 +14,12 @@ public interface TaskService {
 
     void modifyTask(Task task);
 
+
+    int newTask();
+
+    void updateTask(Task task);
+
     List<Task> findUserOwnTask();
+
 
 }

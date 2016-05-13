@@ -6,9 +6,12 @@ import com.cjs.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import java.util.List;
+
 import java.util.Map;
 
 /**
@@ -41,10 +44,27 @@ public class TaskController extends BaseController {
         return generateSuccessMsg("修改任务成功！");
     }
 
+
+    @RequestMapping("/newTask")
+    @ResponseBody
+    public String  newTask(){
+        int taskid = taskService.newTask();
+        String id = String.valueOf(taskid);
+        return id;
+    }
+
+    @RequestMapping("/updateTask")
+    @ResponseBody
+    public Map<String, Object> updateTask(Task task){
+        taskService.updateTask(task);
+        return generateSuccessMsg("修改保存成功");
+    }
+
     @RequestMapping(value="/findUserOwnTask")
     @ResponseBody
     public List<Task> findUserOwnTask() {
         return taskService.findUserOwnTask();
     }
+
 
 }
