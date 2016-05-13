@@ -31,12 +31,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public User findUser(String user_name) {
-        User user = userDao.findByPropertyUnique("user_name", user_name);
-        if (user == null) {
-            throw new MessageException("未找到该用户！");
-        }
-        return user;
+    public User findCurrentUser() {
+        return SessionUtil.getCurrentUser();
     }
 
     @Override
@@ -51,6 +47,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
                 throw new MessageException("您的密码不正确，请填写正确的密码");
             }
             SessionUtil.bindSession("user", user);
+
         }
 
     }

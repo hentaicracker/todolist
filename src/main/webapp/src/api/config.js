@@ -1,11 +1,11 @@
 module.exports = {
-  loginUrl: '/data.json',
-  userDataUrl: '/user.json',
-  tasksUrl: '/tasks.json',
-  saveTaskUrl: '',
-  saveContentUrl: '',
+  loginUrl: 'user/userLogin',
+  userDataUrl: 'user/findCurrentUser',
+  tasksUrl: 'user/findUserOwnTask',
+  saveTaskUrl: 'task/updateTask',
+  saveContentUrl: 'task/updateTask',
   toggleTaskUrl: '',
-  addTaskUrl: '',
-  deleteTaskUrl: '',
-  addTimeUrl: ''
+  addTaskUrl: 'task/newTask',
+  deleteTaskUrl: 'task/deleteTask',
+  addTimeUrl: 'task/updateTask'
 }

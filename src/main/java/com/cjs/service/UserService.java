@@ -14,10 +14,9 @@ public interface UserService {
 
     /**
      * 根据用户名拿到用户对象
-     * @param user_name
      * @return
      */
-    User findUser(String user_name);
+    User findCurrentUser();
 
     /**
      * 用户登录

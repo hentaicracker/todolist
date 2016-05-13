@@ -9,6 +9,8 @@ import com.cjs.util.string.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by xiaowu on 2016/5/8.
  */
@@ -32,6 +34,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         taskDao.update(task);
     }
 
+
     /**
      * 创建新任务
      * @return
@@ -51,15 +54,22 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
     @Override
     public void updateTask(Task task) {
         int id = task.getId();
-        if (!StringUtil.isEmpty(task.getEnd_time())){
-            taskDao.executeUpdate("update Task t set t.end_time = "+task.getEnd_time()+" where t.id = ? ",id);
+        if (!StringUtil.isEmpty(task.getEnd_time())) {
+            taskDao.executeUpdate("update Task t set t.end_time = " + task.getEnd_time() + " where t.id = ? ", id);
         }
-        if (!StringUtil.isEmpty(task.getTask_name())){
-            taskDao.executeUpdate("update Task t set t.task_name = "+task.getTask_name()+" where t.id = ? ",id);
+        if (!StringUtil.isEmpty(task.getTask_name())) {
+            taskDao.executeUpdate("update Task t set t.task_name = " + task.getTask_name() + " where t.id = ? ", id);
         }
-        if (!StringUtil.isEmpty(task.getTask_content())){
-            taskDao.executeUpdate("update Task t set t.task_content = "+task.getTask_content()+" where t.id = ? ",id);
+        if (!StringUtil.isEmpty(task.getTask_content())) {
+            taskDao.executeUpdate("update Task t set t.task_content = " + task.getTask_content() + " where t.id = ? ", id);
         }
+
+    }
+    @Override
+    public List<Task> findUserOwnTask() {
+        Integer user_id = SessionUtil.getCurrentUser().getId();
+        List<Task> tasks = taskDao.findByProperty("user_id", user_id);
+       return tasks;
 
     }
 }

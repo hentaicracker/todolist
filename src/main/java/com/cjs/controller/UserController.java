@@ -3,6 +3,7 @@ package com.cjs.controller;
 import com.cjs.controller.base.BaseController;
 import com.cjs.model.User;
 import com.cjs.service.UserService;
+import com.cjs.util.session.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,14 +24,16 @@ public class UserController extends BaseController {
 
     @RequestMapping(value="/checkUsername")
     @ResponseBody
-    public void checkUsername(String user_name){
+    public Map<String,Object> checkUsername(String user_name){
         userService.checkUsername(user_name);
+        return generateSuccessMsg("验证用户名成功！");
     }
 
-    @RequestMapping(value="/findUser")
+    @RequestMapping(value="/findCurrentUser")
     @ResponseBody
-    public void findUser(String user_name){
-        userService.findUser(user_name);
+    public Map<String,Object> findCurrentUser(){
+        userService.findCurrentUser();
+        return generateSuccessMsg("查询当前用户对象成功！");
     }
 
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
@@ -42,19 +45,22 @@ public class UserController extends BaseController {
 
     @RequestMapping(value="/userRegister")
     @ResponseBody
-    public void userRegister(User user) {
+    public Map<String,Object> userRegister(User user) {
         userService.userRegister(user);
+        return generateSuccessMsg("注册成功！");
     }
 
     @RequestMapping(value="/modifyPassword")
     @ResponseBody
-    public void modifyPassword(Integer user_id, String old_password, String new_password) {
+    public Map<String,Object> modifyPassword(Integer user_id, String old_password, String new_password) {
         userService.modifyPassword(user_id, old_password, new_password);
+        return generateSuccessMsg("修改密码成功！");
     }
 
     @RequestMapping(value="/userQuit")
     @ResponseBody
-    public void userQuit(){
+    public Map<String,Object> userQuit(){
         userService.userQuit();
+        return generateSuccessMsg("退出成功！");
     }
 }
