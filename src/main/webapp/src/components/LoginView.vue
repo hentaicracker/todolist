@@ -66,7 +66,7 @@ export default {
           user_name: this.user.username,
           user_psd: this.user.password
         }).then( (response) => {
-          var data = eval(response)
+          var data = eval(response.data)
           if (data.success) {
             self.$route.router.go('/user')
           } else {
