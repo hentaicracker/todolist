@@ -20,7 +20,7 @@ const mutations = {
   },
 
   RECIEVE_USER (state, user) {
-    state.user = user
+    state.user = user.user
   },
 
   ADD_TASK (state, id) {
