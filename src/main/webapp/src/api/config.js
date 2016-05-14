@@ -4,7 +4,7 @@ module.exports = {
   tasksUrl: 'task/findUserOwnTask',
   saveTaskUrl: 'task/updateTask',
   saveContentUrl: 'task/updateTask',
-  toggleTaskUrl: '',
+  toggleTaskUrl: 'task/modifyTask',
   addTaskUrl: 'task/newTask',
   deleteTaskUrl: 'task/deleteTask',
   addTimeUrl: 'task/updateTask'
