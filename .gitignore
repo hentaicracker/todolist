@@ -11,3 +11,4 @@ target
 /target/*
 !.gitignore
 npm-debug.log
+dbconfig.properties
