@@ -12,7 +12,7 @@ public interface TaskService {
 
     void deleteTask(Integer task_id);
 
-    void modifyTask(Task task);
+    void modifyTask(Integer id);
 
 
     int newTask();

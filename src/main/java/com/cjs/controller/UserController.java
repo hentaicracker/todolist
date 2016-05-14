@@ -4,6 +4,7 @@ import com.cjs.controller.base.BaseController;
 import com.cjs.model.User;
 import com.cjs.service.UserService;
 import com.cjs.util.session.SessionUtil;
+import com.cjs.util.string.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,7 @@ public class UserController extends BaseController {
 
     @RequestMapping(value="/checkUsername")
     @ResponseBody
-    public Map<String,Object> checkUsername(String user_name){
+    public Map<String,Object> checkUsername(String user_name) {
         userService.checkUsername(user_name);
         return generateSuccessMsg("验证用户名成功！");
     }
@@ -40,15 +41,21 @@ public class UserController extends BaseController {
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> userLogin(@RequestBody User user){
-        userService.userLogin(user.getUser_name(),user.getUser_psd());
-        return generateSuccessMsg("登录成功!");
+        if (user != null) {
+            userService.userLogin(user.getUser_name(),user.getUser_psd());
+            return generateSuccessMsg("登录成功!");
+        }
+        return generateFailureMsg("登录失败！");
     }
 
     @RequestMapping(value="/userRegister")
     @ResponseBody
     public Map<String,Object> userRegister(User user) {
-        userService.userRegister(user);
-        return generateSuccessMsg("注册成功！");
+        if (user != null) {
+            userService.userLogin(user.getUser_name(),user.getUser_psd());
+            return generateSuccessMsg("注册成功!");
+        }
+        return generateFailureMsg("注册失败！");
     }
 
     @RequestMapping(value="/modifyPassword")
