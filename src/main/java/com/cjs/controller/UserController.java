@@ -32,11 +32,9 @@ public class UserController extends BaseController {
 
     @RequestMapping(value="/findCurrentUser")
     @ResponseBody
-    public Map<String, Object> findCurrentUser(){
+    public User findCurrentUser(){
         User user = userService.findCurrentUser();
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("user", user);
-        return map;
+        return user;
     }
 
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
