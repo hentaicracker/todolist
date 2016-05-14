@@ -25,8 +25,8 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
     }
 
     @Override
-    public void deleteTask(Integer task_id) {
-        taskDao.deleteByProperty("task_id", task_id);
+    public void deleteTask(Integer id) {
+        taskDao.deleteByProperty("id", id);
     }
 
     @Override
@@ -39,7 +39,6 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         }
         taskDao.executeUpdate("update Task t set t.task_done = " + task.getTask_done() + " where id = ?", id);
     }
-
 
     /**
      * 创建新任务
