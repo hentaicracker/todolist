@@ -40,10 +40,6 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         taskDao.executeUpdate("update Task t set t.task_done = " + task.getTask_done() + " where id = ?", id);
     }
 
-    /**
-     * 创建新任务
-     * @return
-     */
     @Override
     public int newTask() {
         Task task = new Task();
@@ -52,10 +48,6 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         return task.getId();
     }
 
-    /**
-     * 保存修改的任务
-     * @param task
-     */
     @Override
     public void updateTask(Task task) {
         int id = task.getId();
