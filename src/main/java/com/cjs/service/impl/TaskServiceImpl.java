@@ -30,8 +30,14 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
     }
 
     @Override
-    public void modifyTask(Task task) {
-        taskDao.update(task);
+    public void modifyTask(Integer id) {
+        Task task = taskDao.get(id);
+        if (task.getTask_done() == 0) {
+            task.setTask_done(1);
+        } else {
+            task.setTask_done(0);
+        }
+        taskDao.executeUpdate("update Task t set t.task_done = " + task.getTask_done() + " where id = ?", id);
     }
 
 
@@ -55,13 +61,13 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
     public void updateTask(Task task) {
         int id = task.getId();
         if (!StringUtil.isEmpty(task.getEnd_time())) {
-            taskDao.executeUpdate("update Task t set t.end_time = " + task.getEnd_time() + " where t.id = ? ", id);
+            taskDao.executeUpdate("update Task t set t.end_time = '" + task.getEnd_time() + "' where t.id = ? ", id);
         }
         if (!StringUtil.isEmpty(task.getTask_name())) {
-            taskDao.executeUpdate("update Task t set t.task_name = " + task.getTask_name() + " where t.id = ? ", id);
+            taskDao.executeUpdate("update Task t set t.task_name = '" + task.getTask_name() + "' where t.id = ? ", id);
         }
         if (!StringUtil.isEmpty(task.getTask_content())) {
-            taskDao.executeUpdate("update Task t set t.task_content = " + task.getTask_content() + " where t.id = ? ", id);
+            taskDao.executeUpdate("update Task t set t.task_content = '" + task.getTask_content() + "' where t.id = ? ", id);
         }
 
     }
@@ -70,6 +76,5 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         Integer user_id = SessionUtil.getCurrentUser().getId();
         List<Task> tasks = taskDao.findByProperty("user_id", user_id);
        return tasks;
-
     }
 }

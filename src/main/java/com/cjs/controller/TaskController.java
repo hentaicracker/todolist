@@ -5,9 +5,7 @@ import com.cjs.model.Task;
 import com.cjs.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -39,25 +37,24 @@ public class TaskController extends BaseController {
 
     @RequestMapping(value="/modifyTask")
     @ResponseBody
-    public Map<String,Object> modifyTask(Task task){
-        taskService.modifyTask(task);
+    public Map<String,Object> modifyTask(Integer id){
+        taskService.modifyTask(id);
         return generateSuccessMsg("修改任务成功！");
     }
 
+    @RequestMapping(value="/updateTask",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> updateTask(@RequestBody Task task){
+        taskService.updateTask(task);
+        return generateSuccessMsg("修改保存成功");
+    }
 
     @RequestMapping("/newTask")
     @ResponseBody
-    public String  newTask(){
+    public String newTask(){
         int taskid = taskService.newTask();
         String id = String.valueOf(taskid);
         return id;
-    }
-
-    @RequestMapping("/updateTask")
-    @ResponseBody
-    public Map<String, Object> updateTask(Task task){
-        taskService.updateTask(task);
-        return generateSuccessMsg("修改保存成功");
     }
 
     @RequestMapping(value="/findUserOwnTask")
@@ -65,6 +62,4 @@ public class TaskController extends BaseController {
     public List<Task> findUserOwnTask() {
         return taskService.findUserOwnTask();
     }
-
-
 }
