@@ -41,21 +41,29 @@ public class UserController extends BaseController {
     @RequestMapping(value="/userLogin",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> userLogin(@RequestBody User user){
-        if (user != null) {
-            userService.userLogin(user.getUser_name(),user.getUser_psd());
-            return generateSuccessMsg("登录成功!");
+        try {
+            if (user != null) {
+                userService.userLogin(user.getUser_name(),user.getUser_psd());
+                return generateSuccessMsg("登录成功!");
+            }
+        } catch (Exception e) {
+            return generateFailureMsg("用户名或密码错误！");
         }
-        return generateFailureMsg("登录失败！");
+        return null;
     }
 
     @RequestMapping(value="/userRegister")
     @ResponseBody
     public Map<String,Object> userRegister(User user) {
-        if (user != null) {
-            userService.userLogin(user.getUser_name(),user.getUser_psd());
-            return generateSuccessMsg("注册成功!");
+        try {
+            if (user != null) {
+                userService.userLogin(user.getUser_name(),user.getUser_psd());
+                return generateSuccessMsg("注册成功!");
+            }
+        } catch (Exception e) {
+            return generateFailureMsg("注册失败！");
         }
-        return generateFailureMsg("注册失败！");
+        return null;
     }
 
     @RequestMapping(value="/modifyPassword")

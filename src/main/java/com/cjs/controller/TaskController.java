@@ -30,8 +30,8 @@ public class TaskController extends BaseController {
 
     @RequestMapping(value="/deleteTask")
     @ResponseBody
-    public Map<String,Object> deleteTask(Integer task_id){
-        taskService.deleteTask(task_id);
+    public Map<String,Object> deleteTask(Integer id){
+        taskService.deleteTask(id);
         return generateSuccessMsg("删除任务成功！");
     }
 
