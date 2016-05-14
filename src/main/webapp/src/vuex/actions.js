@@ -51,7 +51,7 @@ export const editTaskContent = ({dispatch}, value) => {
   }, (response) => {
     var data = eval(response)
     if(data.success) {
-      dispatch('EDIT_TASK_CONTENT', self.value)
+      dispatch('EDIT_TASK_CONTENT', value)
     } else {
       dispatch('SHOW_ERROR', data.msg)
     }
