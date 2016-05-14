@@ -28,13 +28,14 @@ export const addTask = ({dispatch}) => {
   })
 }
 export const editTaskTitle = ({dispatch}, value) => {
+  var self = this
   api.sendData(config.saveTaskUrl, {
     id: store.state.activeTask.id,
     task_name: value
   }, (response) => {
     var data = eval(response)
     if(data.success) {
-      dispatch('EDIT_TASK_TITLE', value)
+      dispatch('EDIT_TASK_TITLE', self.value)
     } else {
       dispatch('SHOW_ERROR', data.msg)
     }
@@ -43,13 +44,14 @@ export const editTaskTitle = ({dispatch}, value) => {
   })
 }
 export const editTaskContent = ({dispatch}, value) => {
+  var self = this
   api.sendData(config.saveContentUrl, {
     id: store.state.activeTask.id,
     task_content: value
   }, (response) => {
     var data = eval(response)
     if(data.success) {
-      dispatch('EDIT_TASK_CONTENT', value)
+      dispatch('EDIT_TASK_CONTENT', self.value)
     } else {
       dispatch('SHOW_ERROR', data.msg)
     }
@@ -86,6 +88,7 @@ export const toggleTask = ({dispatch}) => {
   })
 }
 export const addTime = ({dispatch}, time) => {
+  var self = this
   api.sendData(config.addTimeUrl, {
     id: store.state.activeTask.id,
     end_time: time
