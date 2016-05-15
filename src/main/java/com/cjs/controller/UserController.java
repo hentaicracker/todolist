@@ -52,12 +52,12 @@ public class UserController extends BaseController {
         return null;
     }
 
-    @RequestMapping(value="/userRegister")
+    @RequestMapping(value="/userRegister",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> userRegister(User user) {
+    public Map<String,Object> userRegister(@RequestBody User user) {
         try {
             if (user != null) {
-                userService.userLogin(user.getUser_name(),user.getUser_psd());
+                userService.userRegister(user);
                 return generateSuccessMsg("注册成功!");
             }
         } catch (Exception e) {
