@@ -5,6 +5,7 @@ import store from './store'
 
 export const toggleActive = makeAction('TOGGLE_ACTIVE')
 export const updateActiveTask = makeAction('SET_ACTIVE_TASK')
+export const showError = makeAction('SHOW_ERROR')
 
 function makeAction (type) {
   return ({ dispatch }, ...args) => dispatch(type, ...args)

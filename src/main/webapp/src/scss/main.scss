@@ -168,6 +168,10 @@
         background-color: #EAEAEA;
       }
 
+      &.emptyTip {
+        text-align: center;
+      }
+
       .t-inner {
         height: 49px;
         position: relative;
@@ -177,6 +181,7 @@
           top: 7px;
           left: -20px;
           appearance: none;
+          cursor: pointer;
           &:after {
             content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#B5B5B5" stroke-width="3"/></svg>')
           }
@@ -202,6 +207,10 @@
         display: inline-block;
         width: 360px;
         cursor: pointer;
+        &.checked {
+          color: #B5B5B5;
+          text-decoration: line-through;
+        }
       }
 
       .time {
@@ -250,6 +259,7 @@
       width: 260px;
       height: 40px;
       content: '';
+      cursor: pointer;
     }
     > input {
       position: absolute;
@@ -284,6 +294,7 @@
       width: 400px;
       height: 420px;
       content: '';
+      cursor: pointer;
     }
     > textarea {
       position: absolute;

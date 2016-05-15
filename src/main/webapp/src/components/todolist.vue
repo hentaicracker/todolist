@@ -6,10 +6,13 @@
     </div>
     <div class="todo-list">
       <ul>
+        <li class="emptyTip" v-show="!tasks.length">
+          <span>任务列表为空，点击下方加号添加任务</span>
+        </li>
         <li v-for="task in tasks | search" :class="{active: task.id === activeTask.id}" transition="expand">
           <div class="t-inner">
             <input class="toggle" type="checkbox" :checked="!!task.task_done" @change="toggleActiveTask(task)">
-            <a class="t-content" @click="updateActiveTask(task)">{{task.task_name}}</a>
+            <a class="t-content" :class="{checked: !!task.task_done}" @click="updateActiveTask(task)">{{task.task_name}}</a>
             <!-- <span class="time">{{task.end_time}}</span> -->
           </div>
           <div class="t-line bottom"></div>

@@ -17,11 +17,11 @@
         <label for="datePicker" title="设置日期">
           <i class="fa fa-calendar" aria-hidden="true"></i>
         </label>
-        <input class="time-input" type="text" id="datePicker" :value="activeTask.end_time | time" v-pikaday="defaultDate" @change="addTime(defaultDate)">
+        <input class="time-input" type="text" id="datePicker" v-pikaday="time" @change="changeTime">
       </div>
     </div>
     <div class="detail-content">
-      <p @dblclick="contentEditing = true">{{activeTask.task_content}}</p>
+      <p @dblclick="contentEditing = true">{{activeTask.task_content ? activeTask.task_content : '任务内容，双击进行修改'}}</p>
       <textarea
         :value="activeTask.task_content"
         v-show="contentEditing"
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { editTaskTitle, editTaskContent, deleteTask, toggleActive, addTime } from '../vuex/actions'
+import { editTaskTitle, editTaskContent, deleteTask, toggleActive, addTime, showError } from '../vuex/actions'
 
 export default {
 
@@ -54,15 +54,21 @@ export default {
       editTaskContent,
       deleteTask,
       toggleActive,
-      addTime
+      addTime,
+      showError
     }
   },
 
   data () {
     return {
       titleEditing: false,
-      contentEditing: false,
-      defaultDate: ''
+      contentEditing: false
+    }
+  },
+
+  computed: {
+    time () {
+      return this.activeTask.end_time ? this.activeTask.end_time.split(' ')[0] : ''
     }
   },
 
@@ -78,7 +84,11 @@ export default {
           this.contentEditing = false
         }
       } else {
-        this.cancelEdit(e)
+        if (this.activeTask.task_name === '') {
+          this.showError('请输入标题！')
+        } else {
+          this.cancelEdit(e)
+        }
       }
       this.toggleActive()
     },
@@ -87,6 +97,10 @@ export default {
       this.titleEditing = false
       this.contentEditing = false
       this.toggleActive()
+    },
+    changeTime (e) {
+      let time = e && e.target.value.trim()
+      this.addTime(time)
     }
   },
 
@@ -97,12 +111,6 @@ export default {
           this.el.focus()
         })
       }
-    }
-  },
-
-  filters: {
-    time (time) {
-      return time && time.split(' ')[0]
     }
   }
 

@@ -3,7 +3,7 @@
 
     <sidebar :user="user" :show.sync="show" :count="count" :done-count="doneCount"></sidebar>
     <todolist :tasks="tasks | isDone"></todolist>
-    <detail></detail>
+    <detail v-show="!isEmptyObject(activeTask)"></detail>
     <tip v-show="showTip" :show.sync="showTip" transition="appear">
       <span slot="body">{{errorText}}</span>
     </tip>
@@ -33,7 +33,8 @@
         user: state => state.user,
         tasks: state => state.tasks,
         errorText: state => state.errorText,
-        showError: state => state.showError
+        showError: state => state.showError,
+        activeTask: state => state.activeTask
       },
       actions: {
         getUserData,
@@ -73,6 +74,15 @@
       },
       count () {
         return this.tasks.length
+      }
+    },
+
+    methods: {
+      isEmptyObject (obj) {
+        for (let key in obj) {
+          return false
+        }
+        return true
       }
     }
 

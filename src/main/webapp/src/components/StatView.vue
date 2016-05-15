@@ -17,8 +17,7 @@ export default {
   computed: {
     undoCount () {
       let count = this.tasks.length
-      let doneCount = this.tasks.filter( (task) => !task.task_done ).length
-      return count - doneCount
+      return count - this.doneCount
     }
   },
 

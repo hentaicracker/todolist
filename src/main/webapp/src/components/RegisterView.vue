@@ -25,7 +25,7 @@
       </div>
       <div class="login-footer">
         <button class="login-btn" @click="register">注册</button>
-        <button class="login-btn" @click="'login'">直接登录</button>
+        <button class="login-btn" v-link="'login'">直接登录</button>
       </div>
     </div>
     <tip v-show="showTip" :show.sync="showTip" transition="appear">
