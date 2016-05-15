@@ -47,9 +47,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
                 throw new MessageException("您的密码不正确，请填写正确的密码");
             }
             SessionUtil.bindSession("user", user);
-
         }
-
     }
 
     @Override
@@ -60,6 +58,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         }
         user.setUser_psd(MD5Util.encode2hex(user.getUser_psd()));
         userDao.save(user);
+        SessionUtil.bindSession("user", user);
     }
 
     @Override
