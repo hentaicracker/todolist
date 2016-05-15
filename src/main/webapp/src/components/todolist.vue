@@ -8,9 +8,9 @@
       <ul>
         <li v-for="task in tasks | search" :class="{active: task.id === activeTask.id}" transition="expand">
           <div class="t-inner">
-            <input class="toggle" type="checkbox" :checked="task.task_done" @change="toggleActiveTask(task)">
+            <input class="toggle" type="checkbox" :checked="!!task.task_done" @change="toggleActiveTask(task)">
             <a class="t-content" @click="updateActiveTask(task)">{{task.task_name}}</a>
-            <span class="time">{{task.end_time}}</span>
+            <!-- <span class="time">{{task.end_time}}</span> -->
           </div>
           <div class="t-line bottom"></div>
         </li>

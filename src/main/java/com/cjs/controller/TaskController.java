@@ -30,15 +30,15 @@ public class TaskController extends BaseController {
 
     @RequestMapping(value="/deleteTask")
     @ResponseBody
-    public Map<String,Object> deleteTask(Integer id){
-        taskService.deleteTask(id);
+    public Map<String,Object> deleteTask(@RequestBody Task task){
+        taskService.deleteTask(task.getId());
         return generateSuccessMsg("删除任务成功！");
     }
 
     @RequestMapping(value="/modifyTask")
     @ResponseBody
-    public Map<String,Object> modifyTask(Integer id){
-        taskService.modifyTask(id);
+    public Map<String,Object> modifyTask(@RequestBody Task task){
+        taskService.modifyTask(task);
         return generateSuccessMsg("修改任务成功！");
     }
 
