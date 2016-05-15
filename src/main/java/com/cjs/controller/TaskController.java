@@ -37,8 +37,8 @@ public class TaskController extends BaseController {
 
     @RequestMapping(value="/modifyTask")
     @ResponseBody
-    public Map<String,Object> modifyTask(Integer id){
-        taskService.modifyTask(id);
+    public Map<String,Object> modifyTask(@RequestBody Task task){
+        taskService.modifyTask( task.getId());
         return generateSuccessMsg("修改任务成功！");
     }
 
