@@ -17,6 +17,7 @@
       </div>
       <div class="login-footer">
         <button class="login-btn" @click="login">登录</button>
+        <button class="login-btn" v-link="'register'">注册</button>
       </div>
     </div>
     <tip v-show="showTip" :show.sync="showTip" transition="appear">

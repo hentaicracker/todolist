@@ -16,7 +16,7 @@ public interface TaskService {
     /**
      * 修改任务的状态 0未完成 1完成
      */
-    void modifyTask(Task task);
+    void modifyTask(Integer id);
 
     /**
      * 创建新任务
