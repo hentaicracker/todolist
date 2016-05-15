@@ -6,6 +6,7 @@ import Vue from 'vue'
 import Router from 'Vue-router'
 import App from 'components/App'
 import LoginView from 'components/LoginView'
+import RegisterView from 'components/RegisterView'
 import MainView from 'components/MainView'
 import StatView from 'components/StatView'
 import VueResource from 'vue-resource'
@@ -24,6 +25,11 @@ router.map({
   '/login': {
     component (resolve) {
       require(['./components/LoginView'], resolve)
+    }
+  },
+  '/register': {
+    component (resolve) {
+      require(['./components/RegisterView'], resolve)
     }
   },
   '/user': {

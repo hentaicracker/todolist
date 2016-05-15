@@ -21,7 +21,7 @@
   const filters = {
     all: tasks => tasks,
     done: tasks => tasks.filter( (task) => !task.task_done ),
-    undo: tasks => tasks.filter( (task) => task.task_done )
+    undo: tasks => tasks.filter( (task) => !!task.task_done )
   }
 
   export default {
