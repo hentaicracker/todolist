@@ -17,7 +17,7 @@
         <label for="datePicker" title="设置日期">
           <i class="fa fa-calendar" aria-hidden="true"></i>
         </label>
-        <input class="time-input" type="text" id="datePicker" v-pikaday="defaultDate" @change="addTime(defaultDate)">
+        <input class="time-input" type="text" id="datePicker" :value="activeTask.end_time | time" v-pikaday="defaultDate" @change="addTime(defaultDate)">
       </div>
     </div>
     <div class="detail-content">
@@ -97,6 +97,12 @@ export default {
           this.el.focus()
         })
       }
+    }
+  },
+
+  filters: {
+    time (time) {
+      return time && time.split(' ')[0]
     }
   }
 

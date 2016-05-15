@@ -30,8 +30,8 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
     }
 
     @Override
-    public void modifyTask(Integer id) {
-        Task task = taskDao.get(id);
+    public void modifyTask(Task task) {
+        Integer id = task.getId();
         if (task.getTask_done() == 0) {
             task.setTask_done(1);
         } else {
