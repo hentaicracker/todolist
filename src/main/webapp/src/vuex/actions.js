@@ -77,7 +77,7 @@ export const toggleTask = ({dispatch}) => {
   }, (response) => {
     var data = util.checkoutData(response)
     if(data.data.success) {
-      dispatch('TOGGLE_TASK')
+      dispatch('TOGGLE_TASK', store.state.activeTask)
     } else {
       dispatch('SHOW_ERROR', data.msg)
     }
