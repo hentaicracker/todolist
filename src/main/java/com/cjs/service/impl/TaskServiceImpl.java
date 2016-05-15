@@ -44,6 +44,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
     public int newTask() {
         Task task = new Task();
         task.setUser_id(SessionUtil.getCurrentUser().getId());
+        task.setTask_done(0);
         taskDao.save(task);
         return task.getId();
     }
