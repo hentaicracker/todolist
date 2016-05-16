@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar-view">
     <div class="user">
-      <img :src="user.user_avatar">
+      <img src="../../build/images/avatar.png">
       <span>{{user.nick_name}}</span>
     </div>
     <div class="project-list">
@@ -51,5 +51,6 @@ export default {
       this.show = str
     }
   }
+
 }
 </script>
