@@ -22,9 +22,9 @@
 
   const filters = {
     all: tasks => tasks,
-    plane: tasks => tasks.filter( (task) => task.task_type === 1 ),
-    todos: tasks => tasks.filter( (task) => task.task_done === 2),
-    purchase: tasks => tasks.filter( (task) => task.task_done === 3)
+    plane: tasks => tasks.filter( (task) => task.task_type === 1),
+    todos: tasks => tasks.filter( (task) => task.task_type === 2),
+    purchase: tasks => tasks.filter( (task) => task.task_type === 3)
   }
 
   export default {
