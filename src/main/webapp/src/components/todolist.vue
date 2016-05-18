@@ -20,7 +20,7 @@
       </ul>
     </div>
     <div>
-      <button class="add-task" title="添加任务" @click="addTask">
+      <button class="add-task" title="添加任务" @click="toggleMask">
         <i class="fa fa-plus" aria-hidden="true"></i>
       </button>
     </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import { updateActiveTask, toggleTask, addTask } from '../vuex/actions'
+  import { updateActiveTask, toggleTask, toggleMask } from '../vuex/actions'
 
   export default {
 
@@ -53,7 +53,7 @@
       actions: {
         updateActiveTask,
         toggleTask,
-        addTask
+        toggleMask
       }
     },
 

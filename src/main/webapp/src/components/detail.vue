@@ -1,23 +1,49 @@
 <template>
   <div id="detail-view">
     <div class="detail-header">
-      <label
-        v-text="activeTask.task_name"
-        @dblclick="titleEditing = true">
-      </label>
-      <input
-        class="toggle-input"
-        :value="activeTask.task_name"
-        v-show="titleEditing = active ? true : titleEditing"
-        v-focus="titleEditing = active ? true : titleEditing"
-        @keyup.enter="doneEdit"
-        @keyup.esc="cancelEdit"
-        @blur="doneEdit">
-      <div class="time">
-        <label for="datePicker" title="设置日期">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
+      <div class="detail-header-left">
+        <label
+          class="title-label"
+          v-text="activeTask.task_name"
+          @dblclick="titleEditing = true">
         </label>
-        <input class="time-input" type="text" id="datePicker" v-pikaday="time" @change="changeTime">
+        <input
+          class="toggle-input"
+          :value="activeTask.task_name"
+          v-show="titleEditing = active ? true : titleEditing"
+          v-focus="titleEditing = active ? true : titleEditing"
+          @keyup.enter="doneEdit"
+          @keyup.esc="cancelEdit"
+          @blur="doneEdit">
+        <label class="tag-label">
+          <i class="fa fa-tag" aria-hidden="true"></i>
+          <span>{{tag}}</span>
+        </label>
+      </div>
+      <div class="detail-header-right">
+        <div class="time">
+          <label for="datePicker" title="设置日期">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+          </label>
+          <input class="time-input" type="text" id="datePicker" v-pikaday="time" @change="changeTime">
+        </div>
+        <div class="place">
+          <label for="placePicker" title="设置地点">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+          </label>
+          <input class="time-input" type="text" id="placePicker" :value="activeTask.task_place" @change="">
+        </div>
+        <div class="priority">
+          <label for="priorityPicker" title="设置优先级">
+            <i class="fa fa-exclamation" aria-hidden="true"></i>
+          </label>
+          <select class="priority-select" id="priorityPicker" :value="activeTask.task_priority">
+            <option value="0">请选择任务优先级</option>
+            <option value="1">一级</option>
+            <option value="2">二级</option>
+            <option value="3">三级</option>
+          </select>
+        </div>
       </div>
     </div>
     <div class="detail-content">
@@ -69,6 +95,21 @@ export default {
   computed: {
     time () {
       return this.activeTask.end_time ? this.activeTask.end_time.split(' ')[0] : ''
+    },
+    tag () {
+      switch (this.activeTask.task_type) {
+        case 1:
+          return '商务旅行'
+          break;
+        case 2:
+          return '日常事务'
+          break;
+        case 3:
+          return '预购清单'
+          break;
+        default:
+          return
+      }
     }
   },
 

@@ -4,6 +4,7 @@ import config from '../api/config'
 import store from './store'
 
 export const toggleActive = makeAction('TOGGLE_ACTIVE')
+export const toggleMask = makeAction('TOGGLE_MASK')
 export const updateActiveTask = makeAction('SET_ACTIVE_TASK')
 export const showError = makeAction('SHOW_ERROR')
 
@@ -22,10 +23,20 @@ export const getUserData = ({dispatch}) => {
     dispatch('RECIEVE_USER', user)
   })
 }
-export const addTask = ({dispatch}) => {
-  api.getData(config.addTaskUrl, (id) => {
-    var id = util.checkoutData(id)
-    dispatch('ADD_TASK', id.data)
+export const addTask = ({dispatch}, taskType) => {
+  api.sendData(config.addTaskUrl, {
+    task_type: taskType
+  }, (response) => {
+    var data = util.checkoutData(response)
+    if(data.data.success) {
+      dispatch('EDIT_TASK_TITLE', value)
+    } else {
+      dispatch('SHOW_ERROR', data.data.msg)
+    }
+    dispatch('ADD_TASK', data.data.id)
+    dispatch('TOGGLE_MASK')
+  }, () => {
+    dispatch('SHOW_ERROR', '网络错误')
   })
 }
 export const editTaskTitle = ({dispatch}, value) => {
@@ -37,7 +48,7 @@ export const editTaskTitle = ({dispatch}, value) => {
     if(data.data.success) {
       dispatch('EDIT_TASK_TITLE', value)
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
@@ -52,7 +63,7 @@ export const editTaskContent = ({dispatch}, value) => {
     if(data.data.success) {
       dispatch('EDIT_TASK_CONTENT', value)
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
@@ -66,7 +77,7 @@ export const deleteTask = ({dispatch}) => {
     if(data.data.success) {
       dispatch('DELETE_TASK')
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
@@ -80,7 +91,7 @@ export const toggleTask = ({dispatch}) => {
     if(data.data.success) {
       dispatch('TOGGLE_TASK', store.state.activeTask)
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
@@ -95,7 +106,7 @@ export const addTime = ({dispatch}, time) => {
     if(data.data.success) {
       dispatch('UPDATE_TIME', time)
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
