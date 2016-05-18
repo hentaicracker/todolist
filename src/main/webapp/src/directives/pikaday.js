@@ -39,5 +39,10 @@ module.exports = {
 
         _this.el.value = val;
         _this.instance.setDate(val);
+    },
+    unbind: function () {
+        var _this = this;
+
+        _this.instance.destroy();
     }
 };

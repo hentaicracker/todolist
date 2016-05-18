@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <div id="register">
+    <div id="register" class="height">
       <div class="login-header">
         <h1>个人任务管理系统</h1>
         <h2>注册</h2>
@@ -11,16 +11,21 @@
           <input class="login-input" v-model="user.username">
         </div>
         <div class="input-row">
+          <label for="input-username" class="input-label">昵称</label>
+          <input class="login-input" v-model="user.nick_name">
+        </div>
+        <div class="input-row">
           <label for="input-username" class="input-label">密码</label>
           <input class="login-input" v-model="user.password" type="password">
         </div>
         <div class="input-row">
           <label for="input-username" class="input-label">确认密码</label>
-          <input class="login-input" v-model="user.password" type="password">
+          <input class="login-input" v-model="user.checkPassword" type="password" @keyup.enter="register">
         </div>
       </div>
       <div class="login-footer">
-        <button class="login-btn" @click="login">登录</button>
+        <button class="login-btn" @click="register">注册</button>
+        <button class="login-btn" v-link="'login'">直接登录</button>
       </div>
     </div>
     <tip v-show="showTip" :show.sync="showTip" transition="appear">
@@ -40,7 +45,9 @@ export default {
     return {
       user: {
         username: '',
-        password: ''
+        password: '',
+        nick_name: '',
+        checkPassword: ''
       },
       showTip: false,
       errorTxt: ''
@@ -51,7 +58,9 @@ export default {
     validation () {
       return {
         name: !!this.user.username.trim(),
-        password: !!this.user.password.trim()
+        password: !!this.user.password.trim(),
+        nickname: !!this.user.nick_name.trim(),
+        checkPassword: !!this.user.checkPassword.trim()
       }
     },
     isValid () {
@@ -59,16 +68,23 @@ export default {
       return Object.keys(validation).every((key) => {
         return validation[key]
       })
+    },
+    checkPwd () {
+      return this.user.password.trim() === this.user.checkPassword.trim()
     }
   },
 
   methods: {
-    login () {
+    register () {
       let self = this
-      if (this.isValid) {
-        this.$http.post(config.loginUrl, {
+      if (!this.checkPwd) {
+        this.showTip = true
+        this.errorTxt = '两次密码输入不一致'
+      } else if (this.isValid) {
+        this.$http.post(config.registerUrl, {
           user_name: this.user.username,
-          user_psd: this.user.password
+          user_psd: this.user.password,
+          nick_name: this.user.nick_name
         }).then( (response) => {
           var data = eval(response.data)
           if (data.success) {
@@ -83,7 +99,7 @@ export default {
         })
       } else {
         this.showTip = true
-        this.errorTxt = '用户名或密码为空！'
+        this.errorTxt = '请补全信息！'
       }
     }
   },

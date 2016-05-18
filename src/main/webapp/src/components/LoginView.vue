@@ -12,7 +12,7 @@
         </div>
         <div class="input-row" >
           <label for="input-username" class="input-label">密码</label>
-          <input class="login-input" v-model="user.password" type="password">
+          <input class="login-input" v-model="user.password" type="password"  @keyup.enter="login">
         </div>
       </div>
       <div class="login-footer">

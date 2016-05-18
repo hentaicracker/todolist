@@ -17,8 +17,7 @@ export default {
   computed: {
     undoCount () {
       let count = this.tasks.length
-      let doneCount = this.tasks.filter( (task) => !task.task_done ).length
-      return count - doneCount
+      return count - this.doneCount
     }
   },
 
@@ -84,6 +83,7 @@ export default {
 .stat-container {
   height: 100%;
   width: 100%;
+  background-color: #2c343c;
 }
 .stat-close {
   position: absolute;

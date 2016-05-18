@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar-view">
     <div class="user">
-      <img :src="user.user_avatar">
+      <img src="../../build/images/avatar.png">
       <span>{{user.nick_name}}</span>
     </div>
     <div class="project-list">
@@ -12,18 +12,22 @@
             <span>所有任务</span>
           </a>
         </li>
-        <li class="not-all" :class="{active: show === 'done'}">
-          <a @click="filterTask('done')">
-            <i class="fa fa-square-o list-icon" aria-hidden="true"></i>
-            <span>未完成</span>
-            <span>{{count - doneCount}}</span>
+        <li :class="{active: show === 1}">
+          <a @click="filterTask(1)">
+            <i class="fa fa-plane list-icon" aria-hidden="true"></i>
+            <span>商务旅行</span>
           </a>
         </li>
-        <li class="not-all" :class="{active: show === 'undo'}">
-          <a @click="filterTask('undo')">
-            <i class="fa fa-check-square-o list-icon" aria-hidden="true"></i>
-            <span>已完成</span>
-            <span>{{doneCount}}</span>
+        <li :class="{active: show === 2}">
+          <a @click="filterTask(2)">
+            <i class="fa fa-list-alt list-icon" aria-hidden="true"></i>
+            <span>日常事务</span>
+          </a>
+        </li>
+        <li :class="{active: show === 3}">
+          <a @click="filterTask(3)">
+            <i class="fa fa-list-ul list-icon" aria-hidden="true"></i>
+            <span>预购清单</span>
           </a>
         </li>
         <li>
@@ -47,9 +51,10 @@ export default {
   props: ['user', 'show', 'count', 'doneCount'],
 
   methods: {
-    filterTask (str) {
-      this.show = str
+    filterTask (num) {
+      this.show = num
     }
   }
+
 }
 </script>

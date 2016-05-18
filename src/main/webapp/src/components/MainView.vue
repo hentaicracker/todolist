@@ -1,12 +1,13 @@
 <template>
   <div class="main-container">
 
-    <sidebar :user="user" :show.sync="show" :count="count" :done-count="doneCount"></sidebar>
-    <todolist :tasks="tasks | isDone"></todolist>
-    <detail></detail>
+    <sidebar :user="user" :show.sync="show"></sidebar>
+    <todolist :tasks="tasks | taskType" :show.sync="showMask"></todolist>
+    <detail v-show="!isEmptyObject(activeTask)"></detail>
     <tip v-show="showTip" :show.sync="showTip" transition="appear">
       <span slot="body">{{errorText}}</span>
     </tip>
+    <mask v-show="showMask"></mask>
 
   </div>
 </template>
@@ -16,12 +17,14 @@
   import todolist from './todolist'
   import detail from './detail'
   import tip from './tip'
+  import mask from './mask'
   import { getUserData, getTasksData } from '../vuex/actions'
 
   const filters = {
     all: tasks => tasks,
-    done: tasks => tasks.filter( (task) => !task.task_done ),
-    undo: tasks => tasks.filter( (task) => !!task.task_done )
+    plane: tasks => tasks.filter( (task) => task.task_type === 1 ),
+    todos: tasks => tasks.filter( (task) => task.task_done === 2),
+    purchase: tasks => tasks.filter( (task) => task.task_done === 3)
   }
 
   export default {
@@ -33,7 +36,9 @@
         user: state => state.user,
         tasks: state => state.tasks,
         errorText: state => state.errorText,
-        showError: state => state.showError
+        showError: state => state.showError,
+        activeTask: state => state.activeTask,
+        showMask: state => state.showMask
       },
       actions: {
         getUserData,
@@ -50,7 +55,7 @@
     },
 
     filters: {
-      isDone () {
+      taskType () {
         return this.filters[this.show](this.tasks)
       }
     },
@@ -59,7 +64,8 @@
       sidebar,
       todolist,
       detail,
-      tip
+      tip,
+      mask
     },
 
     created () {
@@ -67,12 +73,12 @@
       this.getTasksData()
     },
 
-    computed: {
-      doneCount () {
-        return this.filters['undo'](this.tasks).length
-      },
-      count () {
-        return this.tasks.length
+    methods: {
+      isEmptyObject (obj) {
+        for (let key in obj) {
+          return false
+        }
+        return true
       }
     }
 

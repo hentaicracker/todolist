@@ -10,7 +10,8 @@ const state = {
   activeTask: {},
   active: false,
   showError: false,
-  errorText: ''
+  errorText: '',
+  showMask: false
 }
 
 const mutations = {
@@ -67,6 +68,10 @@ const mutations = {
 
   UPDATE_TIME (state, time) {
     state.activeTask.end_time = time
+  },
+
+  TOGGLE_MASK (state) {
+    state.showMask = !state.showMask
   }
 
 }
