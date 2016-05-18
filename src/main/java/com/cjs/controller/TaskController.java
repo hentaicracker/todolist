@@ -23,8 +23,8 @@ public class TaskController extends BaseController {
 
     @RequestMapping("/addTask")
     @ResponseBody
-    public String addTask(Integer task_type){
-        int taskid = taskService.addTask(task_type);
+    public String addTask(@RequestBody Task task){
+        int taskid = taskService.addTask(task.getTask_type());
         String id = String.valueOf(taskid);
         return id;
     }
