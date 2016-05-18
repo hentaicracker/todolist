@@ -12,20 +12,20 @@
             <span>所有任务</span>
           </a>
         </li>
-        <li :class="{active: show === 1}">
-          <a @click="filterTask(1)">
+        <li :class="{active: show === 'plane'}">
+          <a @click="filterTask('plane')">
             <i class="fa fa-plane list-icon" aria-hidden="true"></i>
             <span>商务旅行</span>
           </a>
         </li>
-        <li :class="{active: show === 2}">
-          <a @click="filterTask(2)">
+        <li :class="{active: show === 'todos'}">
+          <a @click="filterTask('todos')">
             <i class="fa fa-list-alt list-icon" aria-hidden="true"></i>
             <span>日常事务</span>
           </a>
         </li>
-        <li :class="{active: show === 3}">
-          <a @click="filterTask(3)">
+        <li :class="{active: show === 'purchase'}">
+          <a @click="filterTask('purchase')">
             <i class="fa fa-list-ul list-icon" aria-hidden="true"></i>
             <span>预购清单</span>
           </a>

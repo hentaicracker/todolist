@@ -98,13 +98,13 @@ export default {
     },
     tag () {
       switch (this.activeTask.task_type) {
-        case 1:
+        case '1':
           return '商务旅行'
           break;
-        case 2:
+        case '2':
           return '日常事务'
           break;
-        case 3:
+        case '3':
           return '预购清单'
           break;
         default:
