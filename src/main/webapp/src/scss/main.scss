@@ -271,15 +271,16 @@
         top: 29px;
         left: 40px;
         font-size: 20px;
-        width: 100%;
+        width: inherit;
         height: 40px;
         font-family: inherit;
       }
       .tag-label {
         position: absolute;
-        top: 29px;
+        top: 70px;
         left: 40px;
-        font-size: 20px;
+        font-size: 14px;
+        line-height: normal;
 
         span {
           margin-left: 5px;

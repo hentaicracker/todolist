@@ -28,7 +28,7 @@ export const addTask = ({dispatch}, taskType) => {
     task_type: taskType
   }, (id) => {
     var id = util.checkoutData(id)
-    dispatch('ADD_TASK', id.data)
+    dispatch('ADD_TASK', id.data, taskType)
     dispatch('TOGGLE_MASK')
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
