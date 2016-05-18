@@ -3,19 +3,19 @@
     <div class="mask-content">
       <ul>
         <li>
-          <a @click="">
+          <a @click="addTask(1)">
             <i class="fa fa-plane list-icon" aria-hidden="true"></i>
             <span>商务旅行</span>
           </a>
         </li>
         <li>
-          <a @click="">
+          <a @click="addTask(2)">
             <i class="fa fa-list-alt list-icon" aria-hidden="true"></i>
             <span>日常事务</span>
           </a>
         </li>
         <li>
-          <a @click="">
+          <a @click="addTask(3)">
             <i class="fa fa-list-ul list-icon" aria-hidden="true"></i>
             <span>预购清单</span>
           </a>
