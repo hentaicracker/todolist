@@ -25,7 +25,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         task.setUser_id(SessionUtil.getCurrentUser().getId());
         task.setTask_done(0);
         task.setTask_type(task_type);
-        task.setTask_priority(0);
+        task.setTask_priority("0");
         taskDao.save(task);
         return task.getId();
     }
@@ -58,8 +58,8 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         if (!StringUtil.isEmpty(task.getTask_content())) {
             taskDao.executeUpdate("update Task t set t.task_content = '" + task.getTask_content() + "' where t.id = ? ", id);
         }
-        if (task.getTask_priority() != 0) {
-            taskDao.executeUpdate("update Task t set t.task_priority = " + task.getTask_priority() + " where t.id = ?", id);
+        if (!StringUtil.isEmpty(task.getTask_priority())) {
+            taskDao.executeUpdate("update Task t set t.task_priority = '" + task.getTask_priority() + "' where t.id = ?", id);
         }
     }
 
