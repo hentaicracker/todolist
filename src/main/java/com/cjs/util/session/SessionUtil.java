@@ -46,7 +46,7 @@ public class SessionUtil {
     public static class SessionNotExitException extends RuntimeException{
 
         /**
-         *
+         * 序列化ID
          */
         private static final long serialVersionUID = 1L;
 

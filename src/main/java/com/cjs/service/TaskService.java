@@ -1,16 +1,17 @@
 package com.cjs.service;
 
-import com.cjs.model.Task;
 
+import com.cjs.model.Task;
 import java.util.List;
 
 /**
  * Created by xiaowu on 2016/5/8.
  */
 public interface TaskService {
-    void addTask(Task task);
-
-
+    /**
+     * 删除一个任务
+     * @param id
+     */
     void deleteTask(Integer id);
 
     /**
@@ -22,7 +23,7 @@ public interface TaskService {
      * 创建新任务
      * @return
      */
-    int newTask();
+    int addTask(Integer task_type);
 
     /**
      * 更新任务对象

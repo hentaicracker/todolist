@@ -21,11 +21,12 @@ public class TaskController extends BaseController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(value="/addTask")
+    @RequestMapping("/addTask")
     @ResponseBody
-    public Map<String,Object> addTask(Task task){
-        taskService.addTask(task);
-        return generateSuccessMsg("添加任务成功！");
+    public String addTask(Integer task_type){
+        int taskid = taskService.addTask(task_type);
+        String id = String.valueOf(taskid);
+        return id;
     }
 
     @RequestMapping(value="/deleteTask")
@@ -49,13 +50,6 @@ public class TaskController extends BaseController {
         return generateSuccessMsg("修改保存成功");
     }
 
-    @RequestMapping("/newTask")
-    @ResponseBody
-    public String newTask(){
-        int taskid = taskService.newTask();
-        String id = String.valueOf(taskid);
-        return id;
-    }
 
     @RequestMapping(value="/findUserOwnTask")
     @ResponseBody

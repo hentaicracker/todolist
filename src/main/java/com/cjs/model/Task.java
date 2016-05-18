@@ -27,6 +27,9 @@ public class Task implements Serializable {
     private String task_longitude;//经度
     private String task_latitude;//纬度
     private Integer task_done;//是否完成  1是  0否
+    private Integer task_type;//任务类型 1:商务旅行 2:日常事务 3:预购清单
+    private String task_place;
+
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -118,5 +121,23 @@ public class Task implements Serializable {
 
     public void setTask_done(Integer task_done) {
         this.task_done = task_done;
+    }
+
+    @Column(name="task_type",length=22)
+    public Integer getTask_type() {
+        return task_type;
+    }
+
+    public void setTask_type(Integer task_type) {
+        this.task_type = task_type;
+    }
+
+    @Column(name="task_place",length=255)
+    public String getTask_place() {
+        return task_place;
+    }
+
+    public void setTask_place(String task_place) {
+        this.task_place = task_place;
     }
 }
