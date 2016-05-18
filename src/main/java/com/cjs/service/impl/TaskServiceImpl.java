@@ -20,8 +20,14 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
     private TaskDao taskDao;
 
     @Override
-    public void addTask(Task task) {
+    public int addTask(Integer task_type) {
+        Task task = new Task();
+        task.setUser_id(SessionUtil.getCurrentUser().getId());
+        task.setTask_done(0);
+        task.setTask_type(task_type);
+        task.setTask_priority(0);
         taskDao.save(task);
+        return task.getId();
     }
 
     @Override
@@ -41,15 +47,6 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
     }
 
     @Override
-    public int newTask() {
-        Task task = new Task();
-        task.setUser_id(SessionUtil.getCurrentUser().getId());
-        task.setTask_done(0);
-        taskDao.save(task);
-        return task.getId();
-    }
-
-    @Override
     public void updateTask(Task task) {
         int id = task.getId();
         if (!StringUtil.isEmpty(task.getEnd_time())) {
@@ -61,12 +58,15 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         if (!StringUtil.isEmpty(task.getTask_content())) {
             taskDao.executeUpdate("update Task t set t.task_content = '" + task.getTask_content() + "' where t.id = ? ", id);
         }
-
+        if (task.getTask_priority() != 0) {
+            taskDao.executeUpdate("update Task t set t.task_priority = " + task.getTask_priority() + " where t.id = ?", id);
+        }
     }
+
     @Override
     public List<Task> findUserOwnTask() {
         Integer user_id = SessionUtil.getCurrentUser().getId();
         List<Task> tasks = taskDao.findByProperty("user_id", user_id);
-       return tasks;
+        return tasks;
     }
 }

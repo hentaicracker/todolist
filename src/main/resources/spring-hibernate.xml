@@ -61,6 +61,7 @@
         <tx:attributes>
             <tx:method name="insert*" propagation="REQUIRED" />
             <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="modify*" propagation="REQUIRED" />
             <tx:method name="delete*" propagation="REQUIRED" />
 
             <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
@@ -70,7 +71,6 @@
 
             <!-- 其他采用默认事务方式 -->
             <tx:method name="*" />
-
         </tx:attributes>
     </tx:advice>
 
