@@ -1,5 +1,9 @@
 <template>
-  <div class="stat-container" v-echarts="pieChartOption"></div>
+  <div class="stat-container">
+    <div class="header">
+
+    </div>
+  </div>
   <a class="stat-close" title="关闭" v-link="'user'">+</a>
 </template>
 
