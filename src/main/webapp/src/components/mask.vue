@@ -28,6 +28,14 @@
 <script>
 import { addTask } from '../vuex/actions'
 
+export default {
+
+  vuex: {
+    actions: {
+      addTask
+    }
+  }
+}
 
 </script>
 
