@@ -83,6 +83,7 @@ export default {
 .stat-container {
   height: 100%;
   width: 100%;
+  background-color: #2c343c;
 }
 .stat-close {
   position: absolute;
