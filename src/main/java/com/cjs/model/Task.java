@@ -23,7 +23,7 @@ public class Task implements Serializable {
     private String task_content;
     private String start_time;
     private String end_time;
-    private Integer task_priority;//优先级
+    private String task_priority;//优先级
     private String task_longitude;//经度
     private String task_latitude;//纬度
     private Integer task_done;//是否完成  1是  0否
@@ -87,12 +87,12 @@ public class Task implements Serializable {
         this.end_time = end_time;
     }
 
-    @Column(name="task_priority",length=22)
-    public Integer getTask_priority() {
+    @Column(name="task_priority",length=255)
+    public String getTask_priority() {
         return task_priority;
     }
 
-    public void setTask_priority(Integer task_priority) {
+    public void setTask_priority(String task_priority) {
         this.task_priority = task_priority;
     }
 
