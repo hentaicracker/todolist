@@ -1,6 +1,8 @@
 var Vue = require('vue');
 var echarts = require('echarts');
 
+import store from '../vuex/store'
+
 module.exports = {
     deep: true,
     params: ['loading'],
@@ -47,6 +49,13 @@ module.exports = {
 
         Vue.nextTick(function () {
             _this.instance.setOption(options);
+
+            _this.instance.on('mapselectchanged', function (param){
+              var province = param.name
+              store.state.city = province
+              _this.el.__vue__.$route.router.go({ name: 'province', params: { area: province}})
+            })
+
         });
     },
     unbind: function () {

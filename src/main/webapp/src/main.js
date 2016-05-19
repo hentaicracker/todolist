@@ -9,11 +9,15 @@ import LoginView from 'components/LoginView'
 import RegisterView from 'components/RegisterView'
 import MainView from 'components/MainView'
 import StatView from 'components/StatView'
+import MapView from 'components/MapView'
 import VueResource from 'vue-resource'
 import vueEcharts from './directives/echarts'
+import provinceEcharts from './directives/provinceEcharts'
 import pikaday from './directives/pikaday'
 
+
 Vue.directive('echarts', vueEcharts)
+Vue.directive('p-echarts', provinceEcharts)
 Vue.directive('pikaday', pikaday)
 
 Vue.use(VueResource)
@@ -40,6 +44,17 @@ router.map({
   '/stat': {
     component (resolve) {
       require(['./components/StatView'], resolve)
+    }
+  },
+  '/map': {
+    component (resolve) {
+      require(['./components/MapView'], resolve)
+    }
+  },
+  '/province/:area': {
+    name: 'province',
+    component (resolve) {
+      require(['./components/province'], resolve)
     }
   }
 })

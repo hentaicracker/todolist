@@ -29,7 +29,7 @@
     </div>
 
     <div class="stat-map-content" v-show="map">
-      <map ></map>
+      <map class="stat-map"></map>
     </div>
   </div>
   <a class="stat-close" title="关闭" v-link="'user'">+</a>
@@ -45,8 +45,8 @@ export default {
 
   data () {
     return {
-      map: false,
-      done: true
+      map: true,
+      done: false
     }
   },
 
@@ -169,6 +169,11 @@ export default {
   .stat-map-content {
     height: 100%;
     width: 100%;
+
+    .stat-map {
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 .stat-close {

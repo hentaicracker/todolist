@@ -28,10 +28,12 @@
           <input class="time-input" type="text" id="datePicker" v-pikaday="time" @change="changeTime">
         </div>
         <div class="place">
-          <label for="placePicker" title="设置地点">
-            <i class="fa fa-location-arrow" aria-hidden="true"></i>
-          </label>
-          <input class="time-input" type="text" id="placePicker" :value="activeTask.task_place" @change="">
+          <a v-link="'map'">
+            <label for="placePicker" title="设置地点">
+              <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            </label>
+            <input class="time-input" type="text" id="placePicker" :value="activeTask.task_place">
+          </a>
         </div>
         <div class="priority">
           <label for="priorityPicker" title="设置优先级">

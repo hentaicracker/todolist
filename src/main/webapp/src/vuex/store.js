@@ -11,7 +11,9 @@ const state = {
   active: false,
   showError: false,
   errorText: '',
-  showMask: false
+  showMask: false,
+  province: '',
+  city: ''
 }
 
 const mutations = {
