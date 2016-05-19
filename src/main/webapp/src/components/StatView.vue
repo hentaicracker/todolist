@@ -21,7 +21,7 @@
       <map class="stat-map"></map>
     </div>
   </div>
-  <a class="stat-close" title="关闭" v-link="'user'">+</a>
+  <a class="stat-close" title="关闭" v-link="{path: '/user'}">+</a>
 </template>
 
 <script>

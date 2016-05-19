@@ -35,7 +35,7 @@ export const addTask = ({dispatch}, taskType) => {
   })
 }
 export const editTaskTitle = ({dispatch}, value) => {
-  api.sendData(config.saveTaskUrl, {
+  api.sendData(config.updateTaskUrl, {
     id: store.state.activeTask.id,
     task_name: value
   }, (response) => {
@@ -43,14 +43,14 @@ export const editTaskTitle = ({dispatch}, value) => {
     if(data.data.success) {
       dispatch('EDIT_TASK_TITLE', value)
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
   })
 }
 export const editTaskContent = ({dispatch}, value) => {
-  api.sendData(config.saveContentUrl, {
+  api.sendData(config.updateTaskUrl, {
     id: store.state.activeTask.id,
     task_content: value
   }, (response) => {
@@ -58,7 +58,7 @@ export const editTaskContent = ({dispatch}, value) => {
     if(data.data.success) {
       dispatch('EDIT_TASK_CONTENT', value)
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
@@ -72,7 +72,7 @@ export const deleteTask = ({dispatch}) => {
     if(data.data.success) {
       dispatch('DELETE_TASK')
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
@@ -86,14 +86,14 @@ export const toggleTask = ({dispatch}) => {
     if(data.data.success) {
       dispatch('TOGGLE_TASK', store.state.activeTask)
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
   })
 }
 export const addTime = ({dispatch}, time) => {
-  api.sendData(config.addTimeUrl, {
+  api.sendData(config.updateTaskUrl, {
     id: store.state.activeTask.id,
     end_time: time
   }, (response) => {
@@ -101,7 +101,7 @@ export const addTime = ({dispatch}, time) => {
     if(data.data.success) {
       dispatch('UPDATE_TIME', time)
     } else {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')
@@ -109,13 +109,13 @@ export const addTime = ({dispatch}, time) => {
 }
 
 export const changePlace = ({dispatch}, place) => {
-  api.sendData(config.addTimeUrl, {
+  api.sendData(config.updateTaskUrl, {
     id: store.state.activeTask.id,
     task_place: place
   }, (response) => {
     var data = util.checkoutData(response)
     if(!data.data.success) {
-      dispatch('SHOW_ERROR', data.msg)
+      dispatch('SHOW_ERROR', data.data.msg)
     }
   }, () => {
     dispatch('SHOW_ERROR', '网络错误')

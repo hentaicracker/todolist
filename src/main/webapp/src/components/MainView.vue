@@ -3,7 +3,7 @@
 
     <sidebar :user="user" :show.sync="show"></sidebar>
     <todolist :tasks="tasks | taskType" :show.sync="showMask"></todolist>
-    <detail v-show="!isEmptyObject(activeTask)"></detail>
+    <detail v-show="isNotEmptyObject(activeTask)"></detail>
     <tip v-show="showTip" :show.sync="showTip" transition="appear">
       <span slot="body">{{errorText}}</span>
     </tip>
@@ -18,7 +18,7 @@
   import detail from './detail'
   import tip from './tip'
   import mask from './mask'
-  import { getUserData, getTasksData } from '../vuex/actions'
+  import { getUserData, getTasksData, changePlace } from '../vuex/actions'
 
   const filters = {
     all: tasks => tasks,
@@ -42,7 +42,8 @@
       },
       actions: {
         getUserData,
-        getTasksData
+        getTasksData,
+        changePlace
       }
     },
 
@@ -71,14 +72,15 @@
     created () {
       this.getUserData()
       this.getTasksData()
+      this.isNotEmptyObject(this.activeTask) && this.changePlace(this.activeTask.task_place)
     },
 
     methods: {
-      isEmptyObject (obj) {
+      isNotEmptyObject (obj) {
         for (let key in obj) {
-          return false
+          return true
         }
-        return true
+        return false
       }
     }
 

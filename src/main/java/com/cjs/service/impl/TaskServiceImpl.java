@@ -61,6 +61,9 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskServic
         if (!StringUtil.isEmpty(task.getTask_priority())) {
             taskDao.executeUpdate("update Task t set t.task_priority = '" + task.getTask_priority() + "' where t.id = ?", id);
         }
+        if (!StringUtil.isEmpty(task.getTask_place())) {
+            taskDao.executeUpdate("update Task t set t.task_place = '" + task.getTask_place() + "' where t.id = ?", id);
+        }
     }
 
     @Override
