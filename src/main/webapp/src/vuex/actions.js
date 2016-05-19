@@ -107,3 +107,17 @@ export const addTime = ({dispatch}, time) => {
     dispatch('SHOW_ERROR', '网络错误')
   })
 }
+
+export const changePlace = ({dispatch}, place) => {
+  api.sendData(config.addTimeUrl, {
+    id: store.state.activeTask.id,
+    task_place: place
+  }, (response) => {
+    var data = util.checkoutData(response)
+    if(!data.data.success) {
+      dispatch('SHOW_ERROR', data.msg)
+    }
+  }, () => {
+    dispatch('SHOW_ERROR', '网络错误')
+  })
+}

@@ -3,30 +3,19 @@
     <div class="header">
       <ul>
         <li>
-          <a :class="{active: done}" @click="doneChart">
+          <a :class="{active: done}" v-link="{ path: '/stat/pie' }" @click="doneChart">
             <span>完成情况统计</span>
           </a>
         </li>
         <li>
-          <a :class="{active: map}" @click="mapChart">
-            <span>地图可视化统计</span>
+          <a :class="{active: map}" v-link="{ path: '/stat' }" @click="mapChart">
+            <span>行程预览</span>
           </a>
         </li>
       </ul>
     </div>
 
-    <div class="stat-pie-content" v-show="done">
-      <ul class="stat-title">
-        <li>商务旅行</li>
-        <li>日常事务</li>
-        <li>预购清单</li>
-      </ul>
-      <div class="stat-content">
-        <pie class="stat-pie" :tasks="plane"></pie>
-        <pie class="stat-pie" :tasks="todos"></pie>
-        <pie class="stat-pie" :tasks="purchase"></pie>
-      </div>
-    </div>
+    <router-view></router-view>
 
     <div class="stat-map-content" v-show="map">
       <map class="stat-map"></map>
@@ -36,7 +25,6 @@
 </template>
 
 <script>
-import pie from './pie'
 import map from './map'
 
 export default {
@@ -47,24 +35,6 @@ export default {
     return {
       map: true,
       done: false
-    }
-  },
-
-  vuex: {
-    getters: {
-      tasks: state => state.tasks
-    }
-  },
-
-  computed: {
-    plane () {
-      return this.tasks.filter((task) => task.task_type === 1)
-    },
-    todos () {
-      return this.tasks.filter((task) => task.task_type === 2)
-    },
-    purchase () {
-      return this.tasks.filter((task) => task.task_type === 3)
     }
   },
 
@@ -80,7 +50,7 @@ export default {
   },
 
   components: {
-    pie, map
+    map
   }
 
 }
@@ -123,6 +93,7 @@ export default {
           width: 100%;
           display: block;
           border: 1px solid #fff;
+          color: #fff;
 
           &.active{
             color: #436EEE;
@@ -135,35 +106,6 @@ export default {
         }
       }
     }
-  }
-
-  .stat-pie-content {
-    height: 100%;
-    width: 100%;
-
-    .stat-title {
-      width: 100%;
-      height: 100px;
-
-      li {
-        float: left;
-        height: 100%;
-        line-height: 180px;
-        text-align: center;
-        width: calc(100%/3);
-      }
-    }
-
-    .stat-content{
-      height: 100%;
-
-      .stat-pie {
-        width: calc(100%/3);
-        float: left;
-        padding-bottom: 200px;
-      }
-    }
-
   }
 
   .stat-map-content {

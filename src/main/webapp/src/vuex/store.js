@@ -12,8 +12,7 @@ const state = {
   showError: false,
   errorText: '',
   showMask: false,
-  province: '',
-  city: ''
+  province: ''
 }
 
 const mutations = {
@@ -71,6 +70,10 @@ const mutations = {
 
   UPDATE_TIME (state, time) {
     state.activeTask.end_time = time
+  },
+
+  UPDATE_PLACE (state, place) {
+    state.activeTask.task_place = place
   },
 
   TOGGLE_MASK (state) {

@@ -44,6 +44,13 @@ router.map({
   '/stat': {
     component (resolve) {
       require(['./components/StatView'], resolve)
+    },
+    subRoutes: {
+      '/pie': {
+        component (resolve) {
+          require(['./components/pieStatView'], resolve)
+        }
+      }
     }
   },
   '/map': {

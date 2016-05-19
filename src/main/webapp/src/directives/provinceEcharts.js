@@ -52,7 +52,7 @@ module.exports = {
 
             _this.instance.on('mapselectchanged', function (param){
               var city = param.name
-              store.state.city = city
+              store.state.activeTask.task_place = city
               _this.el.__vue__.$route.router.go({ path: '/user' })
             })
         });

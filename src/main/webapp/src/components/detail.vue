@@ -32,7 +32,7 @@
             <label for="placePicker" title="设置地点">
               <i class="fa fa-location-arrow" aria-hidden="true"></i>
             </label>
-            <input class="time-input" type="text" id="placePicker" :value="activeTask.task_place">
+            <input class="time-input" type="text" id="placePicker" :value="activeTask.task_place" @change="changePlace(activeTask.task_place)">
           </a>
         </div>
         <div class="priority">
@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { editTaskTitle, editTaskContent, deleteTask, toggleActive, addTime, showError } from '../vuex/actions'
+import { editTaskTitle, editTaskContent, deleteTask, toggleActive, addTime, showError, changePlace } from '../vuex/actions'
 
 export default {
 
