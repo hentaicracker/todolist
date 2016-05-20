@@ -19,6 +19,7 @@ export default {
 
   created () {
     this.mapOption = {
+      backgroundColor: '#436EEE',
       tooltip : {
           trigger: 'item'
       },
@@ -49,8 +50,15 @@ export default {
               roam: true,
               selectedMode : 'single',
               itemStyle:{
-                  //normal:{label:{show:true}},
-                  emphasis:{label:{show:true}}
+                normal: {
+                    areaColor: '#fff',
+                    borderColor: '#436EEE'
+                },
+                emphasis: {
+                    areaColor: '#436EEE',
+                    borderColor: '#fff',
+                    label:{show:true}
+                }
               },
               data:[
                   {name: '北京', selected:false},

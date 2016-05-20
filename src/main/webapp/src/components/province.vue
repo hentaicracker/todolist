@@ -50,6 +50,7 @@ export default {
 
   created () {
     this.provinceOption = {
+      backgroundColor: '#436EEE',
       tooltip : {
           trigger: 'item'
       },
@@ -81,7 +82,15 @@ export default {
           selectedMode : 'single',
           itemStyle:{
               //normal:{label:{show:true}},
-              emphasis:{label:{show:true}}
+              normal: {
+                  areaColor: '#fff',
+                  borderColor: '#436EEE'
+              },
+              emphasis: {
+                  areaColor: '#436EEE',
+                  borderColor: '#fff',
+                  label:{show:true}
+              }
           },
           data:[
               {name: '重庆市',selected:false},
