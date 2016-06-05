@@ -3,7 +3,7 @@ package com.cjs.service;
 import com.cjs.model.User;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 public interface UserService {
     /**

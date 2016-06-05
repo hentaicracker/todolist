@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 /**
  *
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 @Entity
 @Table(name="Task")

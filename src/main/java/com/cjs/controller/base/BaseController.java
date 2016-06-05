@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 public class BaseController {
     public Map<String, Object> generateFailureMsg(Exception e, String defaultMsg) {

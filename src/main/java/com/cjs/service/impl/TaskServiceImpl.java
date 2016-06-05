@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 @Component
 public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskService {

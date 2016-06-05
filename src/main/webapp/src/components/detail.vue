@@ -35,7 +35,7 @@
             <input class="time-input" type="text" id="placePicker" :value="activeTask.task_place">
           </a>
         </div>
-        <div class="priority">
+        <!-- <div class="priority">
           <label for="priorityPicker" title="设置优先级">
             <i class="fa fa-exclamation" aria-hidden="true"></i>
           </label>
@@ -45,7 +45,7 @@
             <option value="2">二级</option>
             <option value="3">三级</option>
           </select>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="detail-content">
@@ -54,14 +54,13 @@
         :value="activeTask.task_content"
         v-show="contentEditing"
         v-focus="contentEditing"
-        @keyup.enter="doneEdit"
         @keyup.esc="cancelEdit"
         @blur="doneEdit">
       </textarea>
     </div>
     <div class="delete-btn">
       <i class="fa fa-pencil" aria-hidden="true" title="编辑" @click="contentEditing = true"></i>
-      <i class="fa fa-floppy-o" aria-hidden="true" title="保存"></i>
+      <i class="fa fa-floppy-o" aria-hidden="true" title="保存" @click="doneEdit"></i>
       <i class="fa fa-trash" aria-hidden="true" title="删除" @click="deleteTask"></i>
     </div>
   </div>
@@ -101,13 +100,13 @@ export default {
     tag () {
       switch (this.activeTask.task_type) {
         case 1:
-          return '商务旅行'
+          return '行程管理'
           break;
         case 2:
-          return '日常事务'
+          return '工作安排'
           break;
         case 3:
-          return '预购清单'
+          return '生活事务'
           break;
         default:
           return

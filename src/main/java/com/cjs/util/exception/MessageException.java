@@ -1,7 +1,7 @@
 package com.cjs.util.exception;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 public class MessageException extends RuntimeException{
 

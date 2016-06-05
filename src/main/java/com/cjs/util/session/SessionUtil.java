@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 
 /**
- * Created by xiaowu on 2016/5/9.
+ * 2016/5/9
  */
 public class SessionUtil {
     /**

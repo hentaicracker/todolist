@@ -1,9 +1,9 @@
 <template>
   <div class="stat-pie-content">
     <ul class="stat-title">
-      <li>商务旅行</li>
-      <li>日常事务</li>
-      <li>预购清单</li>
+      <li>行程管理</li>
+      <li>工作安排</li>
+      <li>生活事务</li>
     </ul>
     <div class="stat-content">
       <pie class="stat-pie" :tasks="plane"></pie>

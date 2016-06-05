@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 public class StringUtil {
 

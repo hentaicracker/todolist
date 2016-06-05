@@ -12,7 +12,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 @Component
 public class BaseDao<T extends Serializable> {

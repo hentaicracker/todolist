@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 @Component
 public class BaseServiceImpl<T extends Serializable> implements BaseService<T> {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 public interface BaseService<T> {
     /**

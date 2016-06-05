@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by xiaowu on 2016/5/8.
+ * 2016/5/8
  */
 @Controller
 @RequestMapping(value="/user")
