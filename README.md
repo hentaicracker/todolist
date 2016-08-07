@@ -1,11 +1,11 @@
 # Todolist
-使用vue.js搭建的一个todo SPA。
+使用vue.js搭建的一个todo SPA。毕业设计作品。
 
 ## What I used?
 > * 前端：vue.js + vue-router + vuex + vue-resource
 > * 后端：springmvc + spring + hibernate + maven + mysql
 
-## 快速开始
+## Get Started
 #### 前端部分：
 Step 1.安装项目依赖
 ```
