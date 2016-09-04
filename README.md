@@ -1,5 +1,5 @@
 # Todolist
-使用vue.js搭建的一个todo SPA。毕业设计作品。
+使用vue.js搭建的一个todo SPA。
 
 ## What I used?
 > * 前端：vue.js + vue-router + vuex + vue-resource
